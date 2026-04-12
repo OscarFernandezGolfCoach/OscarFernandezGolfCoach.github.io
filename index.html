@@ -11,6 +11,8 @@
   <div class="page">
 
     <header class="header">
+      <img src="oscar.jpg" alt="Foto de Oscar Fernandez Godoy" class="profile-photo">
+
       <h1>Oscar Fernandez Godoy</h1>
       <p class="subtitle">Técnico Profesional de Golf</p>
       <p class="links">
@@ -18,6 +20,7 @@
       </p>
     </header>
 
+    <!-- SOBRE MI (visible siempre) -->
     <section>
       <h2>Sobre mí</h2>
       <p>
@@ -26,29 +29,38 @@
       </p>
     </section>
 
-    <section>
-      <h2>Palmarés</h2>
-      <ul>
-        <li>🏆 Logro destacado 1 (puedes decirme cuáles y los agrego)</li>
-        <li>🏆 Logro destacado 2</li>
-        <li>🏆 Logro destacado 3</li>
-      </ul>
+    <!-- PALMARES (desplegable) -->
+    <section class="accordion">
+      <button class="accordion-btn">Palmarés</button>
+      <div class="accordion-content">
+        <ul>
+          <li>🏆 Logro destacado 1</li>
+          <li>🏆 Logro destacado 2</li>
+          <li>🏆 Logro destacado 3</li>
+        </ul>
+      </div>
     </section>
 
-    <section>
-      <h2>Metodología</h2>
-      <p>
-        Mi metodología se basa en una combinación de análisis técnico, trabajo físico específico y entrenamiento mental. 
-        Utilizo herramientas modernas de medición, ejercicios personalizados y rutinas adaptadas a cada jugador para lograr una mejora constante y sostenible.
-      </p>
+    <!-- METODOLOGIA (desplegable) -->
+    <section class="accordion">
+      <button class="accordion-btn">Metodología</button>
+      <div class="accordion-content">
+        <p>
+          Mi metodología se basa en una combinación de análisis técnico, trabajo físico específico y entrenamiento mental. 
+          Utilizo herramientas modernas de medición, ejercicios personalizados y rutinas adaptadas a cada jugador para lograr una mejora constante.
+        </p>
+      </div>
     </section>
 
-    <section>
-      <h2>Equipo</h2>
-      <p>
-        Trabajo con un equipo multidisciplinar que incluye preparadores físicos, especialistas en biomecánica y expertos en psicología deportiva. 
-        Juntos ofrecemos un enfoque integral para el desarrollo del jugador.
-      </p>
+    <!-- EQUIPO (desplegable) -->
+    <section class="accordion">
+      <button class="accordion-btn">Equipo</button>
+      <div class="accordion-content">
+        <p>
+          Trabajo con un equipo multidisciplinar que incluye preparadores físicos, especialistas en biomecánica y expertos en psicología deportiva. 
+          Juntos ofrecemos un enfoque integral para el desarrollo del jugador.
+        </p>
+      </div>
     </section>
 
     <footer class="footer">
@@ -59,6 +71,17 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Script para desplegables
+    const buttons = document.querySelectorAll(".accordion-btn");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const content = btn.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
   </script>
 
 </body>
