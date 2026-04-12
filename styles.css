@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #000; /* color detrás de la imagen si sobra espacio */
+  background: #000;
 }
 
 /* Imagen de fondo SIN cortes y SIN deformarse */
@@ -10,8 +10,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;   /* ocupa el alto exacto de la pantalla */
-  width: auto;     /* mantiene proporción real */
+  height: 100vh;
+  width: auto;
   z-index: -1;
 }
 
@@ -24,10 +24,10 @@ body {
   border: none;
 }
 
-/* Secciones sin márgenes que generen “cuadros invisibles” */
+/* Secciones sin márgenes */
 section {
   margin: 0;
-  padding: 20px; /* si quieres cero, pon 0 */
+  padding: 20px;
   background: none;
   border: none;
 }
@@ -45,12 +45,24 @@ section {
   margin-top: 10px;
 }
 
-/* Contenido de los desplegables oculto por defecto */
-.accordion-content {
-  display: none;
-}
-
 /* Botón activo */
 .accordion-btn.active {
   background: #dcdcdc;
+}
+
+/* Contenido de los desplegables con animación */
+.accordion-content {
+  max-height: 0;                 /* cerrado por defecto */
+  overflow: hidden;              /* oculta contenido */
+  transition: max-height 0.4s ease;  /* animación suave */
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0 12px;               /* padding lateral */
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cuando está abierto */
+.accordion-content.open {
+  padding: 12px;                 /* padding completo */
 }
