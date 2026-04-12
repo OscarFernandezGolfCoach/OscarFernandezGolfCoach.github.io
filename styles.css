@@ -1,36 +1,28 @@
+/* Elimina márgenes del body */
 body {
   margin: 0;
   padding: 0;
-  background: #000; /* color de fondo detrás de la imagen */
+  background: #000; /* color detrás de la imagen si sobra espacio */
 }
 
+/* Imagen de fondo SIN cortes y SIN deformarse */
 .bg-image {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;   /* la imagen ocupa el alto exacto de la pantalla */
-  width: auto;     /* el ancho se ajusta sin deformarse */
+  height: 100vh;   /* ocupa el alto exacto de la pantalla */
+  width: auto;     /* mantiene proporción real */
   z-index: -1;
 }
 
-.bg-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: -1;
-}
-
-/* Caja del contenido */
+/* Elimina completamente el cuadro alrededor del contenido */
 .page {
-  max-width: none;   /* elimina el ancho fijo */
-  margin: 0;         /* elimina márgenes */
-  padding: 0;        /* elimina espacio interno */
-  background: none;  /* sin fondo */
-  border: none;      /* sin borde */
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
 }
-
 
 /* Botones desplegables */
 .accordion-btn {
