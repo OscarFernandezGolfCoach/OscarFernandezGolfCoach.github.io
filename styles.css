@@ -1,9 +1,16 @@
 body {
-  background-image: url("f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg");
-  background-size: 100% 100%;   /* La imagen se ajusta EXACTA al tamaño de la pantalla */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  background: #000; /* color de fondo detrás de la imagen */
+}
+
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;   /* la imagen ocupa el alto exacto de la pantalla */
+  width: auto;     /* el ancho se ajusta sin deformarse */
+  z-index: -1;
 }
 
 .bg-image {
