@@ -8,13 +8,13 @@
 </head>
 
 <body>
+  <!-- Imagen de fondo REAL sin cortes -->
   <img class="bg-image" src="f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg" alt="">
+
+  <!-- Contenido sin márgenes ni fondo -->
   <div class="page">
 
-
     <header class="header">
-    
-
       <h1>Oscar Fernandez Godoy</h1>
       <p class="subtitle">Técnico Profesional de Golf</p>
       <p class="links">
@@ -22,7 +22,6 @@
       </p>
     </header>
 
-    <!-- SOBRE MI (visible siempre) -->
     <section>
       <h2>Sobre mí</h2>
       <p>
@@ -31,7 +30,6 @@
       </p>
     </section>
 
-    <!-- PALMARES (desplegable) -->
     <section class="accordion">
       <button class="accordion-btn">Palmarés</button>
       <div class="accordion-content">
@@ -43,7 +41,6 @@
       </div>
     </section>
 
-    <!-- METODOLOGIA (desplegable) -->
     <section class="accordion">
       <button class="accordion-btn">Metodología</button>
       <div class="accordion-content">
@@ -54,7 +51,6 @@
       </div>
     </section>
 
-    <!-- EQUIPO (desplegable) -->
     <section class="accordion">
       <button class="accordion-btn">Equipo</button>
       <div class="accordion-content">
@@ -74,9 +70,7 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Script para desplegables
     const buttons = document.querySelectorAll(".accordion-btn");
-
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         btn.classList.toggle("active");
