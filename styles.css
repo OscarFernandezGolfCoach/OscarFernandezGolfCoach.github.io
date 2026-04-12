@@ -1,3 +1,11 @@
+body {
+  background-image: url("f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg");
+  background-size: cover;        /* La imagen cubre toda la pantalla */
+  background-position: center;   /* Centrada */
+  background-repeat: no-repeat;  /* No se repite */
+  background-attachment: fixed;  /* Efecto elegante tipo “parallax” */
+}
+
 /* Botones desplegables */
 .accordion-btn {
   width: 100%;
