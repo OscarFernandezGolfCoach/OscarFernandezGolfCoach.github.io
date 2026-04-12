@@ -5,31 +5,30 @@ body {
   background: #000;
 }
 
-/* Imagen de fondo SIN cortes y SIN deformarse */
+/* Imagen de fondo SIN cortes y desplazada a la derecha */
 .bg-image {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;              /* mueve la imagen hacia la derecha */
+  transform: translateX(-40%); /* ajusta cuánto se desplaza (modifica este valor si quieres más/menos) */
   height: 100vh;
   width: auto;
   z-index: -1;
 }
 
-/* Elimina completamente el cuadro alrededor del contenido */
+/* Contenido centrado con márgenes blancos */
 .page {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
+  max-width: 900px;
+  margin: 40px auto;       /* margen blanco arriba y a los lados */
+  padding: 20px;
+  background: rgba(255,255,255,0.85); /* fondo blanco suave para que se lea bien */
+  border-radius: 12px;
 }
 
-/* Secciones sin márgenes */
+/* Secciones */
 section {
-  margin: 0;
-  padding: 20px;
-  background: none;
-  border: none;
+  margin: 0 0 20px 0;
+  padding: 0;
 }
 
 /* Botones desplegables */
@@ -45,24 +44,23 @@ section {
   margin-top: 10px;
 }
 
-/* Botón activo */
-.accordion-btn.active {
-  background: #dcdcdc;
-}
-
 /* Contenido de los desplegables con animación */
 .accordion-content {
-  max-height: 0;                 /* cerrado por defecto */
-  overflow: hidden;              /* oculta contenido */
-  transition: max-height 0.4s ease;  /* animación suave */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
   background: rgba(255, 255, 255, 0.7);
-  padding: 0 12px;               /* padding lateral */
+  padding: 0 12px;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
-/* Cuando está abierto */
 .accordion-content.open {
-  padding: 12px;                 /* padding completo */
+  padding: 12px;
+}
+
+/* Botón activo */
+.accordion-btn.active {
+  background: #dcdcdc;
 }
