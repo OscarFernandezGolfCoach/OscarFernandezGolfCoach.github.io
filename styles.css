@@ -1,9 +1,10 @@
 body {
   background-image: url("f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: contain;      /* La imagen se ve completa */
+  background-position: center top; 
+  background-repeat: no-repeat;  
   background-attachment: fixed;
+  background-color: #000;        /* Color de fondo detrás de la imagen */
 }
 
 /* Caja del contenido */
