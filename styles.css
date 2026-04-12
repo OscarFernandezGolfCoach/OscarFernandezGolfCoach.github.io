@@ -27,3 +27,12 @@
   border-bottom: 1px solid var(--border);
   background: #fafafa;
 }
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 16px;
+  border: 3px solid var(--border);
+}
