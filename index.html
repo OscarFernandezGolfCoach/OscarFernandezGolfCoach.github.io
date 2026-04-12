@@ -8,10 +8,11 @@
 </head>
 
 <body>
-  <!-- Imagen de fondo REAL sin cortes -->
+
+  <!-- Imagen de fondo -->
   <img class="bg-image" src="f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg" alt="">
 
-  <!-- Contenido sin márgenes ni fondo -->
+  <!-- Contenedor principal -->
   <div class="page">
 
     <header class="header">
@@ -70,7 +71,7 @@
 
   </div>
 
-  <!-- SCRIPT DEL ACORDEÓN CON ANIMACIÓN PROFESIONAL -->
+  <!-- SCRIPT DEL ACORDEÓN -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -86,7 +87,7 @@
       btn.addEventListener("click", () => {
         const content = btn.nextElementSibling;
 
-        // Cerrar todos los demás
+        // Cerrar otros
         document.querySelectorAll(".accordion-content").forEach(c => {
           if (c !== content) {
             c.style.maxHeight = null;
