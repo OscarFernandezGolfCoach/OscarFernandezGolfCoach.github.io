@@ -30,6 +30,7 @@
       </p>
     </section>
 
+    <!-- PALMARÉS -->
     <section class="accordion">
       <button class="accordion-btn">Palmarés</button>
       <div class="accordion-content">
@@ -41,6 +42,7 @@
       </div>
     </section>
 
+    <!-- METODOLOGÍA -->
     <section class="accordion">
       <button class="accordion-btn">Metodología</button>
       <div class="accordion-content">
@@ -51,6 +53,7 @@
       </div>
     </section>
 
+    <!-- EQUIPO -->
     <section class="accordion">
       <button class="accordion-btn">Equipo</button>
       <div class="accordion-content">
@@ -67,15 +70,37 @@
 
   </div>
 
+  <!-- SCRIPT DEL ACORDEÓN CON ANIMACIÓN PROFESIONAL -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const buttons = document.querySelectorAll(".accordion-btn");
+
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
-        btn.classList.toggle("active");
         const content = btn.nextElementSibling;
-        content.style.display = content.style.display === "block" ? "none" : "block";
+
+        // Cerrar todos los demás
+        document.querySelectorAll(".accordion-content").forEach(c => {
+          if (c !== content) {
+            c.style.maxHeight = null;
+            c.classList.remove("open");
+          }
+        });
+        document.querySelectorAll(".accordion-btn").forEach(b => {
+          if (b !== btn) b.classList.remove("active");
+        });
+
+        // Abrir/cerrar el actual
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          content.classList.remove("open");
+          btn.classList.remove("active");
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.add("open");
+          btn.classList.add("active");
+        }
       });
     });
   </script>
