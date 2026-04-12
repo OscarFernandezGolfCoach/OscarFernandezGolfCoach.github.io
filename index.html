@@ -76,6 +76,12 @@
 
     const buttons = document.querySelectorAll(".accordion-btn");
 
+    // Asegurar que todos empiezan cerrados
+    document.querySelectorAll(".accordion-content").forEach(c => {
+      c.style.maxHeight = null;
+      c.classList.remove("open");
+    });
+
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         const content = btn.nextElementSibling;
