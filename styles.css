@@ -10,7 +10,7 @@ body {
   position: fixed;
   top: 0;
   left: 50%;              /* mueve la imagen hacia la derecha */
-  transform: translateX(-40%); /* ajusta cuánto se desplaza (modifica este valor si quieres más/menos) */
+  transform: translateX(-60%); /* ajusta cuánto se desplaza (modifica este valor si quieres más/menos) */
   height: 100vh;
   width: auto;
   z-index: -1;
