@@ -1,9 +1,19 @@
 body {
   background-image: url("f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg");
-  background-size: cover;        /* La imagen cubre toda la pantalla */
-  background-position: center;   /* Centrada */
-  background-repeat: no-repeat;  /* No se repite */
-  background-attachment: fixed;  /* Efecto elegante tipo “parallax” */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Caja del contenido */
+.page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px 20px 40px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
 
 /* Botones desplegables */
@@ -17,29 +27,4 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   margin-top: 10px;
-}
-
-.accordion-btn:hover {
-  background: #e9e9e9;
-}
-
-.accordion-btn.active {
-  background: #dcdcdc;
-}
-
-.accordion-content {
-  display: none;
-  padding: 12px;
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: #fafafa;
-}
-.profile-photo {
-  width: 180px;     /* tamaño solicitado */
-  height: auto;     /* mantiene proporción sin cortar */
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto 16px;
-  border: 3px solid var(--border);
 }
