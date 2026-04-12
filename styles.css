@@ -24,6 +24,14 @@ body {
   border: none;
 }
 
+/* Secciones sin márgenes que generen “cuadros invisibles” */
+section {
+  margin: 0;
+  padding: 20px; /* si quieres cero, pon 0 */
+  background: none;
+  border: none;
+}
+
 /* Botones desplegables */
 .accordion-btn {
   width: 100%;
@@ -35,4 +43,19 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   margin-top: 10px;
+}
+
+/* Contenido de los desplegables oculto por defecto */
+.accordion-content {
+  display: none;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Botón activo */
+.accordion-btn.active {
+  background: #dcdcdc;
 }
