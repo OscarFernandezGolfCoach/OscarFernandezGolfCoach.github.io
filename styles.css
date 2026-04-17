@@ -1,18 +1,19 @@
-/* 1. RESET BÁSICO */
+/* 1. RESET TOTAL */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 2. CUERPO SIN COLORES (Para ver el fondo) */
 html, body {
   width: 100%;
   height: 100%;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #222; /* Fondo oscuro de respaldo */
+  background: transparent; /* Eliminamos el fondo negro */
 }
 
-/* 2. IMAGEN DE FONDO */
+/* 3. IMAGEN DE FONDO (Capa base) */
 .bg-image {
   position: fixed;
   top: 0;
@@ -21,101 +22,92 @@ html, body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: -1;
-  display: block;
+  z-index: -1; /* Al fondo */
 }
 
-/* 3. CONTENEDOR */
+/* 4. CONTENEDOR PRINCIPAL TRANSPARENTE */
 .page {
   position: relative;
-  z-index: 10;
-  max-width: 600px;
+  z-index: 1;
+  max-width: 500px;
   margin: 0 auto;
   padding: 40px 20px;
-  color: #fff; /* Texto principal en blanco para que resalte */
+  background: transparent; /* Aseguramos transparencia total */
 }
 
+/* 5. TEXTOS DE CABECERA (Con sombra para leer sobre la foto) */
 .header, .about, .footer {
   text-align: center;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   margin-bottom: 30px;
 }
 
-h1 {
-  font-size: 2.2rem;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+h1 { font-size: 2.2rem; margin-bottom: 5px; }
+
+.about p {
+  background: rgba(0, 0, 0, 0.4); /* Fondo oscuro muy suave para la bio */
+  padding: 15px;
+  border-radius: 12px;
+  text-shadow: none;
 }
 
-.subtitle {
-  font-weight: bold;
-  color: #eee;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-}
-
-/* 4. ACORDEONES (MÁXIMA COMPATIBILIDAD) */
+/* 6. ACORDEONES MEJORADOS */
 .accordion-item {
   margin-bottom: 12px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.95); /* Blanco casi sólido */
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.9); /* Blanco casi sólido */
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .accordion-btn {
   width: 100%;
   padding: 18px 20px;
-  background: #fff;
+  background: transparent;
   border: none;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #1a3c17; /* Verde oscuro para el título del botón */
+  color: #1a3c17; /* Verde oscuro */
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
 
-.accordion-btn::after {
-  content: '+';
-  font-size: 1.4rem;
-  color: #1a3c17;
-}
-
-.accordion-item.is-open .accordion-btn::after {
-  content: '-';
-}
-
-/* CONTENIDO: Aquí forzamos que el texto sea negro sobre fondo blanco */
+/* 7. CONTENIDO INTERNO (Forzamos visibilidad) */
 .accordion-content {
-  max-height: 0;
+  height: 0; /* Controlado por JS */
   overflow: hidden;
-  background-color: #fff;
-  color: #333; /* Texto gris oscuro/negro para que SE VEA */
-  transition: max-height 0.3s ease-out;
+  transition: height 0.3s ease-out;
+  background: #ffffff; /* Fondo blanco puro al abrir */
 }
 
-.accordion-item.is-open .accordion-content {
-  max-height: 1500px; /* Suficiente altura */
+.inner-text {
+  padding: 10px 20px 25px 20px;
+  color: #1a1a1a !important; /* FORZAMOS TEXTO NEGRO */
+  text-shadow: none !important; /* QUITAMOS SOMBRAS AQUÍ */
+  display: block !important; /* ASEGURAMOS QUE EXISTA */
 }
 
-.accordion-content p, .accordion-content ul {
-  padding: 15px 20px 25px 20px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.accordion-content li {
-  margin-bottom: 10px;
+.inner-text ul {
   list-style: none;
+  padding-top: 10px;
 }
 
-.accordion-content a {
-  color: #0066cc;
-  text-decoration: underline;
+.inner-text li {
+  margin-bottom: 10px;
+  color: #1a1a1a;
 }
 
-.footer {
-  margin-top: 40px;
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+/* Botón de descarga moderno */
+.download-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #1a3c17;
+  color: #ffffff !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
 }
