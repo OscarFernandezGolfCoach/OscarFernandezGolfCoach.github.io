@@ -1,19 +1,70 @@
-/* ESTILOS DEL ACORDEÓN MEJORADOS */
+/* 1. RESET CRÍTICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1a1a1a;
+  background-color: #f4f4f4; /* Color de respaldo por si falla la foto */
+}
+
+/* 2. IMAGEN DE FONDO (Capa -1) */
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .bg-image { object-position: 80% center; }
+}
+
+/* 3. CONTENEDOR (Capa 1) */
+.page {
+  position: relative;
+  z-index: 1; /* Esto asegura que el texto esté POR ENCIMA de la foto */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header, .about, .footer {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #1a3c17;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.9);
+}
+
+/* 4. ACORDEONES MODERNOS */
 .accordion-item {
   margin-bottom: 12px;
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.05); /* Fondo muy sutil cuando está cerrado */
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(255, 255, 255, 0.2); /* Sutil fondo para verlo siempre */
+  backdrop-filter: blur(5px); /* Efecto cristal moderno */
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Efecto de elevación y brillo al abrir */
 .accordion-item.is-open {
-  background-color: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  transform: translateY(-2px); /* Pequeño salto hacia arriba */
-  border: 1px solid rgba(26, 60, 23, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 .accordion-btn {
@@ -28,46 +79,42 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: letter-spacing 0.3s ease;
 }
 
-/* Al pasar el ratón el texto se separa un poco (efecto moderno) */
-.accordion-btn:hover {
-  letter-spacing: 0.5px;
-}
-
-/* Animación del icono + / - */
+/* El icono + */
 .accordion-btn::after {
   content: '+';
   font-size: 1.5rem;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: inline-block;
+  transition: transform 0.4s ease;
 }
 
 .accordion-item.is-open .accordion-btn::after {
-  content: '+'; /* Mantenemos el plus pero lo giramos 45 grados para que sea una X */
-  transform: rotate(45deg);
-  color: #d9534f; /* Color sutil de cierre */
+  transform: rotate(45deg); /* Se convierte en X */
+  color: #d9534f;
 }
 
-/* CONTENIDO CON ANIMACIÓN DE ENTRADA */
+/* 5. CONTENIDO CON ANIMACIÓN SEGURA */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0; /* Empezamos invisibles */
-  transform: translateY(10px); /* Empezamos un poco más abajo */
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.4s ease, 
-              transform 0.4s ease;
+  opacity: 0; /* Empieza invisible */
+  transition: max-height 0.4s ease-out, opacity 0.3s ease;
 }
 
+/* Cuando se abre, se vuelve visible */
 .accordion-item.is-open .accordion-content {
+  max-height: 1000px; /* Suficiente para el texto */
   opacity: 1;
-  transform: translateY(0); /* Sube a su posición original */
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 }
 
 .accordion-content p, .accordion-content ul {
   padding: 0 20px 10px 20px;
 }
+
+.accordion-content li {
+  margin-bottom: 8px;
+  list-style: none;
+}
+
+.footer { margin-top: 40px; font-size: 0.8rem; opacity: 0.8; }
