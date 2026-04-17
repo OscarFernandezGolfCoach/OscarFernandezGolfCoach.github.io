@@ -1,16 +1,11 @@
-/* Reset general */
+/* ELIMINAMOS TODOS LOS MÁRGENES Y FONDOS POR DEFECTO */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  color: #1a1a1a;
-}
-
-/* Imagen de fondo fija */
+/* LA IMAGEN DE FONDO */
 .bg-image {
   position: fixed;
   top: 0;
@@ -21,59 +16,38 @@ body {
   z-index: -1;
 }
 
-/* CONTENEDOR PRINCIPAL: Ahora es TRANSPARENTE */
+/* EL CONTENEDOR - SIN FONDO, SIN CAJAS */
 .page {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: transparent; /* QUITADO EL RECUADRO AQUÍ */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: transparent !important; /* FORZAMOS TRANSPARENCIA TOTAL */
 }
 
-.header {
+/* TEXTOS FLOTANDO SOBRE LA IMAGEN */
+header, section, .accordion, footer {
+  background: transparent !important;
   text-align: center;
   margin-bottom: 30px;
 }
 
 h1 { font-size: 2.5rem; color: #1a3c17; }
+h2 { color: #1a3c17; border-bottom: 1px solid #1a3c17; display: inline-block; }
 
-/* ESTILO DE LOS ACORDEONES (SIN CAJAS EXTERNAS) */
-.accordion {
-  margin-bottom: 15px;
-}
-
+/* LOS BOTONES DEL ACORDEÓN TAMBIÉN TRANSPARENTES */
 .accordion-btn {
   width: 100%;
-  text-align: left;
   padding: 15px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.6); /* Fondo sutil para que el botón se vea */
-  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.2) !important; /* Casi invisible */
+  border: 1px solid #1a3c17 !important;
   cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-.accordion-btn.active {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
-  background: rgba(255, 255, 255, 0.8); /* Fondo solo al abrirse */
-  border-radius: 0 0 8px 8px;
-}
-
-.accordion-content p, .accordion-content ul {
-  padding: 15px;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 0.9rem;
+  transition: max-height 0.3s ease;
+  background: transparent !important;
 }
