@@ -1,4 +1,3 @@
-/* 1. RESET TOTAL DE FONDOS Y BORDES */
 * {
   margin: 0;
   padding: 0;
@@ -11,93 +10,81 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   color: #1a1a1a;
-  line-height: 1.6;
 }
 
-/* 2. IMAGEN DE FONDO (Ajustada para que no se corte el apellido) */
+/* IMAGEN DE FONDO */
 .bg-image {
   position: fixed;
   top: 0;
-  left: 10%; /* Empuja la imagen a la izquierda desde el inicio */
-  transform: translateX(0); /* Quitamos el desplazamiento agresivo */
-  height: 100vh;
-  width: auto;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Esto es clave: centra la imagen pero prioriza que se vea el contenido */
+  object-fit: cover; 
+  /* Si el apellido está a la derecha, usamos 'right' para que no lo corte */
+  object-position: right center; 
   z-index: -1;
-  pointer-events: none;
 }
 
-/* Ajuste fino para móviles */
+/* Ajuste específico para que en móviles se vea más a la izquierda si el apellido está ahí */
 @media (max-width: 600px) {
   .bg-image {
-    left: -15%; /* En móviles la movemos un poco más a la izquierda para centrar el apellido */
-    height: 100vh;
-    width: auto;
+    /* Si el apellido se corta, prueba cambiando 'right' por un porcentaje como '80%' */
+    object-position: 85% center; 
   }
 }
 
-/* 3. CONTENEDOR PRINCIPAL */
+/* CONTENEDOR */
 .page {
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 60px 20px;
 }
 
-/* 4. TEXTOS */
 .header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 h1 {
-  font-size: 2.8rem;
-  color: #1a3c17; /* Verde golf */
-  margin-bottom: 5px;
+  font-size: 2.5rem;
+  color: #1a3c17;
+  line-height: 1.1;
 }
 
 .subtitle {
   font-weight: bold;
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 15px;
+  margin: 10px 0;
 }
 
 section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #1a3c17;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #1a3c17 !important; /* Línea decorativa */
+  border-bottom: 2px solid #1a3c17 !important;
   display: inline-block;
-}
-
-/* 5. ACORDEONES TRANSPARENTES */
-.accordion {
   margin-bottom: 10px;
 }
 
+/* ACORDEONES */
 .accordion-btn {
   width: 100%;
   text-align: left;
   padding: 15px 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #1a3c17;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0,0,0,0.1) !important; /* Línea divisoria sutil */
+  border-bottom: 1px solid rgba(0,0,0,0.2) !important;
 }
 
-.accordion-btn::after {
-  content: '+';
-}
-
-.accordion-btn.active::after {
-  content: '-';
-}
+.accordion-btn::after { content: '+'; }
+.accordion-btn.active::after { content: '-'; }
 
 .accordion-content {
   max-height: 0;
@@ -106,15 +93,13 @@ h2 {
 }
 
 .accordion-content p, .accordion-content ul {
-  padding: 10px 0 20px 0;
-  list-style-position: inside;
+  padding: 10px 0;
 }
 
 .footer {
   text-align: center;
-  margin-top: 60px;
-  font-size: 0.9rem;
-  color: #555;
+  margin-top: 50px;
+  font-size: 0.8rem;
 }
 
 .links a {
