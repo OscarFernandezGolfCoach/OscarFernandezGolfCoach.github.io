@@ -1,150 +1,30 @@
-/* RESET GENERAL */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #1a1a1a;
-  line-height: 1.6;
-}
-
-/* IMAGEN DE FONDO CORREGIDA */
+/* IMAGEN DE FONDO - VERSIÓN DEFINITIVA PARA MÓVIL */
 .bg-image {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  /* Usamos dvh para que en móvil ignore la barra de navegación y no salte */
-  height: 100dvh; 
+  width: 100vw;
+  height: 100vh;
+  /* El secreto para que no se vea cortada es usar cover con center */
   object-fit: cover;
-  /* Por defecto en PC un poco a la derecha */
-  object-position: 80% center; 
+  object-position: center center; 
   z-index: -1;
+  /* Esto evita que la imagen intente reajustarse al hacer scroll */
+  will-change: transform;
 }
 
-/* AJUSTE PARA MÓVIL (Centrado automático) */
+/* Ajuste específico para que en móviles la foto no haga zoom extraño */
 @media (max-width: 480px) {
   .bg-image {
-    /* En móvil la centramos para que no se vea desplazada */
-    object-position: center; 
+    /* Si la foto es horizontal y el móvil vertical, 'center' es lo más seguro.
+       Si quieres que se mueva un poco a un lado para que se vea tu cara, 
+       prueba con '60% center' o '40% center' en lugar de 'center center' */
+    object-position: center center; 
+    height: -webkit-fill-available; /* Ajuste especial para Safari iOS */
   }
-  
+
   h1 {
-    font-size: 2rem !important; /* Evita que el nombre sea demasiado grande */
+    font-size: 1.8rem !important; /* Aseguramos que el nombre no ocupe toda la pantalla */
+    padding-top: 10px;
   }
-}
-
-/* CONTENEDOR PRINCIPAL */
-.page {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 50px 20px;
-}
-
-.header, .about, .footer {
-  background: transparent;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  color: #1a3c17;
-  margin-bottom: 5px;
-  /* Sombra suave para que el nombre se lea aunque la foto sea clara detrás */
-  text-shadow: 0px 1px 3px rgba(255,255,255,0.6);
-}
-
-.subtitle {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-/* CONTACTO */
-.contact-info p {
-  margin-bottom: 8px;
-  font-size: 1rem;
-}
-
-.contact-info a {
-  color: #0066cc;
-  text-decoration: none;
-}
-
-strong {
-  font-weight: 800;
-}
-
-h2 {
-  font-size: 1.4rem;
-  color: #1a3c17;
-  border-bottom: 2px solid #1a3c17;
-  display: inline-block;
-  margin-bottom: 15px;
-}
-
-/* ACORDEONES DINÁMICOS */
-.accordion {
-  margin-bottom: 10px;
-  border-radius: 8px;
-  transition: background-color 0.4s ease;
-}
-
-.accordion.is-open {
-  /* Fondo un poco más sólido para leer mejor sobre la foto */
-  background-color: rgba(255, 255, 255, 0.9); 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.accordion-btn {
-  width: 100%;
-  text-align: left;
-  padding: 18px 15px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #1a3c17;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: space-between;
-}
-
-.accordion.is-open .accordion-btn {
-  border-bottom: none;
-}
-
-.accordion-btn::after {
-  content: '+';
-}
-
-.accordion.is-open .accordion-btn::after {
-  content: '-';
-}
-
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out;
-}
-
-.accordion-content p, .accordion-content ul {
-  padding: 0 15px 20px 15px;
-  list-style: none;
-}
-
-.accordion-content li {
-  margin-bottom: 8px;
-}
-
-.footer {
-  margin-top: 60px;
-  font-size: 0.8rem;
-  opacity: 0.7;
 }
