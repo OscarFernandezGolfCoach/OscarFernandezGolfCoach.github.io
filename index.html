@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
@@ -40,14 +40,14 @@
     <div class="accordion">
       <button class="accordion-btn">Metodología</button>
       <div class="accordion-content">
-        <p>Mi metodología combina análisis técnico avanzado, preparación física específica y estrategia mental en el campo para maximizar el rendimiento.</p>
+        <p>Mi metodología combina análisis técnico avanzado, preparación física específica y estrategia mental en el campo.</p>
       </div>
     </div>
 
     <div class="accordion">
       <button class="accordion-btn">Equipo</button>
       <div class="accordion-content">
-        <p>Trabajo con un equipo multidisciplinar que incluye especialistas en biomecánica, preparadores físicos y expertos en psicología deportiva para ofrecer un enfoque integral.</p>
+        <p>Trabajo con especialistas en biomecánica, preparadores físicos y psicólogos deportivos.</p>
       </div>
     </div>
 
@@ -56,9 +56,8 @@
       <div class="accordion-content">
         <ul>
           <li>⛳ Clases individuales y grupales</li>
-          <li>📊 Análisis de swing con tecnología</li>
-          <li>🏌️‍♂️ Salidas al campo tutorizadas</li>
-          <li>🧠 Coaching deportivo y mental</li>
+          <li>📊 Análisis de swing</li>
+          <li>🏌️‍♂️ Salidas al campo</li>
         </ul>
       </div>
     </div>
@@ -69,17 +68,20 @@
   </div>
 
   <script>
-    const buttons = document.querySelectorAll(".accordion-btn");
-    buttons.forEach(btn => {
-      btn.addEventListener("click", function() {
+    const accButtons = document.querySelectorAll(".accordion-btn");
+    accButtons.forEach(btn => {
+      btn.onclick = function() {
+        // Alternamos la clase 'active' en el botón y en el contenedor padre
         this.classList.toggle("active");
+        this.parentElement.classList.toggle("is-open");
+        
         const content = this.nextElementSibling;
         if (content.style.maxHeight) {
           content.style.maxHeight = null;
         } else {
           content.style.maxHeight = content.scrollHeight + "px";
         }
-      });
+      };
     });
   </script>
 </body>
