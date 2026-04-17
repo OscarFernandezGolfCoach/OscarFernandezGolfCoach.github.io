@@ -1,3 +1,4 @@
+/* TRANSPARENCIA TOTAL Y RESET */
 * {
   margin: 0;
   padding: 0;
@@ -10,27 +11,27 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   color: #1a1a1a;
+  line-height: 1.6;
 }
 
-/* IMAGEN DE FONDO */
+/* IMAGEN DE FONDO - AJUSTE PARA APELLIDO */
 .bg-image {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Esto es clave: centra la imagen pero prioriza que se vea el contenido */
-  object-fit: cover; 
-  /* Si el apellido está a la derecha, usamos 'right' para que no lo corte */
-  object-position: right center; 
+  object-fit: cover;
+  /* Mantiene el enfoque en la parte derecha de la foto (apellido) */
+  object-position: 85% center; 
   z-index: -1;
 }
 
-/* Ajuste específico para que en móviles se vea más a la izquierda si el apellido está ahí */
-@media (max-width: 600px) {
+/* AJUSTE MÓVIL EXTREMO */
+@media (max-width: 480px) {
   .bg-image {
-    /* Si el apellido se corta, prueba cambiando 'right' por un porcentaje como '80%' */
-    object-position: 85% center; 
+    /* Si el apellido aún se corta, sube este valor a 90% o 95% */
+    object-position: 90% center; 
   }
 }
 
@@ -38,7 +39,7 @@ body {
 .page {
   max-width: 600px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
 
 .header {
@@ -48,13 +49,14 @@ body {
 
 h1 {
   font-size: 2.5rem;
-  color: #1a3c17;
-  line-height: 1.1;
+  color: #1a3c17; /* Verde oscuro */
+  line-height: 1.2;
 }
 
 .subtitle {
   font-weight: bold;
-  margin: 10px 0;
+  font-size: 1.1rem;
+  margin-top: 5px;
 }
 
 section {
@@ -69,11 +71,15 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* ACORDEONES */
+/* ESTILO ACORDEONES SIN FONDO */
+.accordion {
+  margin-bottom: 5px;
+}
+
 .accordion-btn {
   width: 100%;
   text-align: left;
-  padding: 15px 0;
+  padding: 18px 0;
   font-size: 1.2rem;
   font-weight: bold;
   color: #1a3c17;
@@ -83,23 +89,39 @@ h2 {
   border-bottom: 1px solid rgba(0,0,0,0.2) !important;
 }
 
-.accordion-btn::after { content: '+'; }
-.accordion-btn.active::after { content: '-'; }
+.accordion-btn::after {
+  content: '+';
+  font-weight: normal;
+}
+
+.accordion-btn.active::after {
+  content: '-';
+}
 
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+  transition: max-height 0.4s ease-out;
 }
 
-.accordion-content p, .accordion-content ul {
-  padding: 10px 0;
+.accordion-content ul {
+  list-style: none;
+  padding: 10px 0 20px 5px;
+}
+
+.accordion-content li {
+  margin-bottom: 8px;
+}
+
+.accordion-content p {
+  padding: 10px 0 20px 0;
 }
 
 .footer {
   text-align: center;
   margin-top: 50px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 
 .links a {
