@@ -45,17 +45,22 @@ html, body {
 
 h1 { font-size: 2.5rem; margin-bottom: 10px; }
 
+.contact-info a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .about p {
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.6); 
   padding: 20px;
   border-radius: 15px;
   line-height: 1.6;
 }
 
-/* 6. ACORDEONES - CORREGIDO */
+/* 6. ACORDEONES */
 .accordion {
   margin-bottom: 15px;
-  background: #ffffff !important; 
+  background: #ffffff; 
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -74,19 +79,26 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; }
   align-items: center;
   cursor: pointer;
   outline: none;
+  user-select: none;
 }
 
-/* 7. CONTENIDO DESPLEGABLE - CORREGIDO */
+/* 7. CONTENIDO DESPLEGABLE */
 .accordion-content {
-  max-height: 0; /* Usamos max-height para que la animación funcione */
+  max-height: 0;
   overflow: hidden;
   background-color: #ffffff;
-  transition: max-height 0.3s ease-in-out; /* Animación suave */
+  transition: max-height 0.4s ease-in-out;
 }
 
-/* Esta clase la activará el JavaScript */
+/* Clase activa activada por JS */
 .accordion.is-open .accordion-content {
-  max-height: 1000px; /* Un valor lo suficientemente grande */
+  max-height: 1000px; /* Suficiente para el contenido */
+}
+
+/* Rotación del icono + a - cuando está abierto */
+.accordion.is-open .accordion-btn span {
+  transform: rotate(45deg);
+  display: inline-block;
 }
 
 .inner-text {
@@ -97,8 +109,8 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; }
 }
 
 .inner-text ul {
-  list-style: disc;
-  margin: 10px 0 10px 20px;
+  list-style: none; /* Quitamos puntos feos */
+  margin: 10px 0;
 }
 
 .inner-text li {
@@ -116,5 +128,9 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; }
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
-  text-align: center;
+  transition: background 0.3s;
+}
+
+.download-link:hover {
+  background: #2a5a25;
 }
