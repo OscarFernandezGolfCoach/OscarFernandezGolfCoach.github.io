@@ -50,7 +50,10 @@ h1 { font-size: 2.5rem; color: #1a3c17; margin-bottom: 5px; }
 .contact-info a {
   color: #0066cc;
   text-decoration: none;
-  font-weight: 700; /* Negrita extra fuerte */
+}
+/* Forzamos que todo lo que esté en strong sea negrita muy visible */
+strong {
+  font-weight: 800;
 }
 
 h2 { font-size: 1.4rem; color: #1a3c17; border-bottom: 2px solid #1a3c17; display: inline-block; margin-bottom: 10px; }
@@ -97,7 +100,6 @@ h2 { font-size: 1.4rem; color: #1a3c17; border-bottom: 2px solid #1a3c17; displa
   list-style: none;
 }
 
-/* Estilo para los ítems en negrita dentro del acordeón */
 .accordion-content li {
   margin-bottom: 8px;
 }
