@@ -1,105 +1,114 @@
-/* 1. RESET TOTAL */
+/* 1. RESET DE NAVEGADOR */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 2. ELIMINAR CUALQUIER COLOR DE FONDO DEL CUERPO */
+/* 2. EL CUERPO DEBE SER TRANSPARENTE */
 html, body {
   width: 100%;
   height: 100%;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: none !important; /* Quitamos el negro de fondo */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a3c17; /* Color de seguridad verde oscuro */
 }
 
-/* 3. IMAGEN DE FONDO (CAPA MÁS PROFUNDA) */
+/* 3. LA IMAGEN DE FONDO (CAPA 0) */
 .bg-image {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: -10 !important; /* Muy al fondo */
-  display: block;
+  z-index: 1; /* La ponemos en la capa 1 */
 }
 
-/* 4. CONTENEDOR DE LA PÁGINA (TRANSPARENTE) */
+/* 4. EL CONTENIDO (CAPA 2 - SIEMPRE POR ENCIMA) */
 .page {
   position: relative;
-  z-index: 10; /* Por encima de la imagen */
-  max-width: 500px;
+  z-index: 2; /* Mayor que la imagen */
+  max-width: 550px;
   margin: 0 auto;
   padding: 40px 20px;
-  background: transparent !important; /* Forzamos transparencia */
+  min-height: 100vh;
 }
 
 /* 5. TEXTOS SUPERIORES */
 .header, .about, .footer {
   text-align: center;
-  color: white !important;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* Sombra para que se lea sobre la foto */
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
   margin-bottom: 30px;
 }
 
+h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
 .about p {
-  background: rgba(0, 0, 0, 0.4); /* Solo un velo oscuro tras la bio */
-  padding: 15px;
-  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5); /* Velo negro para leer el Sobre Mí */
+  padding: 20px;
+  border-radius: 15px;
+  line-height: 1.6;
 }
 
-/* 6. ACORDEONES (CUADROS BLANCOS) */
+/* 6. ACORDEONES (Cajas Blancas) */
 .accordion-item {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+  background: #ffffff !important; /* Blanco sólido para que el texto se vea sí o sí */
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.95) !important; /* Fondo casi blanco */
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .accordion-btn {
   width: 100%;
   padding: 20px;
-  background: transparent !important;
+  background: #ffffff;
   border: none;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #1a3c17 !important; /* Verde oscuro */
+  color: #1a3c17;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
 
-/* 7. CONTENIDO INTERNO (TEXTO NEGRO) */
+/* 7. CONTENIDO DESPLEGABLE (TEXTO NEGRO) */
 .accordion-content {
-  height: 0;
+  height: 0; /* JS controla esto */
   overflow: hidden;
+  background-color: #f9f9f9;
   transition: height 0.3s ease-out;
-  background: #ffffff !important; /* Fondo blanco puro al abrir */
 }
 
 .inner-text {
-  padding: 10px 20px 25px 20px;
+  padding: 20px;
   color: #000000 !important; /* TEXTO NEGRO PURO */
-  text-shadow: none !important; /* Sin sombras para legibilidad */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.inner-text ul {
+  list-style: none;
+  margin: 10px 0;
 }
 
 .inner-text li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #000000 !important;
-  list-style: none;
 }
 
-/* Botón de descarga */
+/* Enlace de descarga */
 .download-link {
   display: inline-block;
   margin-top: 15px;
-  padding: 12px 20px;
+  padding: 12px 25px;
   background: #1a3c17;
   color: #ffffff !important;
   text-decoration: none;
   border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
 }
