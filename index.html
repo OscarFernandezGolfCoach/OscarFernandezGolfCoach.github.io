@@ -9,10 +9,8 @@
 
 <body>
 
-  <!-- Imagen de fondo -->
-  <img class="bg-image" src="f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg" alt="">
+  <img class="bg-image" src="f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg" alt="Fondo Golf">
 
-  <!-- Contenedor principal -->
   <div class="page">
 
     <header class="header">
@@ -23,7 +21,7 @@
       </p>
     </header>
 
-    <section>
+    <section class="section-block">
       <h2>Sobre mí</h2>
       <p>
         Soy técnico profesional de golf con experiencia en formación, entrenamiento y desarrollo de jugadores de todos los niveles. 
@@ -31,7 +29,6 @@
       </p>
     </section>
 
-    <!-- PALMARÉS -->
     <section class="accordion">
       <button class="accordion-btn">Palmarés</button>
       <div class="accordion-content">
@@ -43,24 +40,21 @@
       </div>
     </section>
 
-    <!-- METODOLOGÍA -->
     <section class="accordion">
       <button class="accordion-btn">Metodología</button>
       <div class="accordion-content">
         <p>
           Mi metodología se basa en una combinación de análisis técnico, trabajo físico específico y entrenamiento mental. 
-          Utilizo herramientas modernas de medición, ejercicios personalizados y rutinas adaptadas a cada jugador para lograr una mejora constante.
+          Utilizo herramientas modernas de medición, ejercicios personalizados y rutinas adaptadas a cada jugador.
         </p>
       </div>
     </section>
 
-    <!-- EQUIPO -->
     <section class="accordion">
       <button class="accordion-btn">Equipo</button>
       <div class="accordion-content">
         <p>
-          Trabajo con un equipo multidisciplinar que incluye preparadores físicos, especialistas en biomecánica y expertos en psicología deportiva. 
-          Juntos ofrecemos un enfoque integral para el desarrollo del jugador.
+          Trabajo con un equipo multidisciplinar que incluye preparadores físicos, especialistas en biomecánica y expertos en psicología deportiva.
         </p>
       </div>
     </section>
@@ -71,41 +65,25 @@
 
   </div>
 
-  <!-- SCRIPT DEL ACORDEÓN -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const buttons = document.querySelectorAll(".accordion-btn");
 
-    // Asegurar que todos empiezan cerrados
-    document.querySelectorAll(".accordion-content").forEach(c => {
-      c.style.maxHeight = null;
-      c.classList.remove("open");
-    });
-
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         const content = btn.nextElementSibling;
 
-        // Cerrar otros
-        document.querySelectorAll(".accordion-content").forEach(c => {
-          if (c !== content) {
-            c.style.maxHeight = null;
-            c.classList.remove("open");
-          }
-        });
-        document.querySelectorAll(".accordion-btn").forEach(b => {
-          if (b !== btn) b.classList.remove("active");
-        });
-
-        // Abrir/cerrar el actual
+        // Lógica de apertura/cierre
         if (content.style.maxHeight) {
           content.style.maxHeight = null;
-          content.classList.remove("open");
           btn.classList.remove("active");
         } else {
+          // Cerrar otros
+          document.querySelectorAll(".accordion-content").forEach(c => c.style.maxHeight = null);
+          document.querySelectorAll(".accordion-btn").forEach(b => b.classList.remove("active"));
+          
           content.style.maxHeight = content.scrollHeight + "px";
-          content.classList.add("open");
           btn.classList.add("active");
         }
       });
