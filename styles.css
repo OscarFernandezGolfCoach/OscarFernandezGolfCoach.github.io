@@ -1,85 +1,124 @@
-/* Limpieza total de fondos */
+/* 1. RESET TOTAL DE FONDOS Y BORDES */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 body {
-  font-family: sans-serif;
-  color: #1a1a1a; /* Texto oscuro para que se vea sobre la imagen */
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
 }
 
-/* Imagen de fondo fija */
+/* 2. IMAGEN DE FONDO (Ajustada para que no se corte el apellido) */
 .bg-image {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-40%);
+  left: 10%; /* Empuja la imagen a la izquierda desde el inicio */
+  transform: translateX(0); /* Quitamos el desplazamiento agresivo */
   height: 100vh;
   width: auto;
   z-index: -1;
+  pointer-events: none;
 }
 
-/* Contenedor principal sin fondo */
+/* Ajuste fino para móviles */
+@media (max-width: 600px) {
+  .bg-image {
+    left: -15%; /* En móviles la movemos un poco más a la izquierda para centrar el apellido */
+    height: 100vh;
+    width: auto;
+  }
+}
+
+/* 3. CONTENEDOR PRINCIPAL */
 .page {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: transparent !important;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px;
 }
 
-.header, section, .footer {
+/* 4. TEXTOS */
+.header {
   text-align: center;
-  margin-bottom: 30px;
-  background: transparent !important;
+  margin-bottom: 50px;
 }
 
-h1 { font-size: 2.5rem; color: #1a3c17; }
+h1 {
+  font-size: 2.8rem;
+  color: #1a3c17; /* Verde golf */
+  margin-bottom: 5px;
+}
 
-/* ACORDEÓN 100% TRANSPARENTE */
+.subtitle {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #1a3c17;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #1a3c17 !important; /* Línea decorativa */
+  display: inline-block;
+}
+
+/* 5. ACORDEONES TRANSPARENTES */
 .accordion {
   margin-bottom: 10px;
-  background: transparent !important; /* Quita el fondo del bloque */
 }
 
 .accordion-btn {
   width: 100%;
   text-align: left;
-  padding: 15px 0; /* Sin padding lateral para que el texto alinee con el resto */
-  font-size: 1.2rem;
+  padding: 15px 0;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #1a3c17;
   cursor: pointer;
-  
-  /* Quitamos el fondo y bordes de caja */
-  background: transparent !important; 
-  border: none !important;
-  border-bottom: 1px solid #1a3c17 !important; /* Una línea sutil para saber dónde clicar */
-  
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.1) !important; /* Línea divisoria sutil */
+}
+
+.accordion-btn::after {
+  content: '+';
+}
+
+.accordion-btn.active::after {
+  content: '-';
 }
 
 .accordion-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease;
-  
-  /* Quitamos el fondo del contenido */
-  background: transparent !important; 
-  border: none !important;
 }
 
 .accordion-content p, .accordion-content ul {
-  padding: 15px 0;
-  background: transparent !important;
+  padding: 10px 0 20px 0;
+  list-style-position: inside;
 }
 
-/* Icono de + y - para el desplegable */
-.accordion-btn::after {
-  content: '+';
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.9rem;
+  color: #555;
 }
-.accordion-btn.active::after {
-  content: '-';
+
+.links a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
 }
