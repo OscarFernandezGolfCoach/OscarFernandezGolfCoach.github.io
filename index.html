@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
 
@@ -64,7 +64,13 @@
     <div class="accordion">
       <button class="accordion-btn">Servicios</button>
       <div class="accordion-content">
-        <div style="padding: 20px 0; text-align: center;">
+        <div style="padding: 15px 15px 20px 15px; text-align: center;">
+          <p style="margin-bottom: 15px; font-style: italic;">
+            Además de la formación, gestiono la venta de gorras exclusivas a través de <strong>Caprichocaps</strong>, combinando estilo y pasión por el deporte.
+          </p>
+          
+          <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
+          
           <p>📦 <strong><a href="Catalogo Gtkaddy.pptx" download style="color: #1a3c17; text-decoration: underline; font-size: 1.1rem;">Descargar Catálogo Gtkaddy</a></strong></p>
         </div>
       </div>
@@ -84,6 +90,7 @@
         const content = this.nextElementSibling;
         const isOpen = parent.classList.contains("is-open");
 
+        // Cerrar todos los demás
         accButtons.forEach(otherBtn => {
           const otherParent = otherBtn.parentElement;
           const otherContent = otherBtn.nextElementSibling;
@@ -92,6 +99,7 @@
           otherContent.style.maxHeight = null;
         });
 
+        // Abrir el actual si no estaba abierto
         if (!isOpen) {
           parent.classList.add("is-open");
           this.classList.add("active");
