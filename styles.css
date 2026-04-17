@@ -1,11 +1,16 @@
-/* ELIMINAMOS TODOS LOS MÁRGENES Y FONDOS POR DEFECTO */
+/* Limpieza total de fondos */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* LA IMAGEN DE FONDO */
+body {
+  font-family: sans-serif;
+  color: #1a1a1a; /* Texto oscuro para que se vea sobre la imagen */
+}
+
+/* Imagen de fondo fija */
 .bg-image {
   position: fixed;
   top: 0;
@@ -16,38 +21,65 @@
   z-index: -1;
 }
 
-/* EL CONTENEDOR - SIN FONDO, SIN CAJAS */
+/* Contenedor principal sin fondo */
 .page {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background: transparent !important; /* FORZAMOS TRANSPARENCIA TOTAL */
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: transparent !important;
 }
 
-/* TEXTOS FLOTANDO SOBRE LA IMAGEN */
-header, section, .accordion, footer {
-  background: transparent !important;
+.header, section, .footer {
   text-align: center;
   margin-bottom: 30px;
+  background: transparent !important;
 }
 
 h1 { font-size: 2.5rem; color: #1a3c17; }
-h2 { color: #1a3c17; border-bottom: 1px solid #1a3c17; display: inline-block; }
 
-/* LOS BOTONES DEL ACORDEÓN TAMBIÉN TRANSPARENTES */
+/* ACORDEÓN 100% TRANSPARENTE */
+.accordion {
+  margin-bottom: 10px;
+  background: transparent !important; /* Quita el fondo del bloque */
+}
+
 .accordion-btn {
   width: 100%;
-  padding: 15px;
-  background: rgba(255,255,255,0.2) !important; /* Casi invisible */
-  border: 1px solid #1a3c17 !important;
-  cursor: pointer;
+  text-align: left;
+  padding: 15px 0; /* Sin padding lateral para que el texto alinee con el resto */
+  font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 5px;
+  color: #1a3c17;
+  cursor: pointer;
+  
+  /* Quitamos el fondo y bordes de caja */
+  background: transparent !important; 
+  border: none !important;
+  border-bottom: 1px solid #1a3c17 !important; /* Una línea sutil para saber dónde clicar */
+  
+  display: flex;
+  justify-content: space-between;
 }
 
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.4s ease;
+  
+  /* Quitamos el fondo del contenido */
+  background: transparent !important; 
+  border: none !important;
+}
+
+.accordion-content p, .accordion-content ul {
+  padding: 15px 0;
   background: transparent !important;
+}
+
+/* Icono de + y - para el desplegable */
+.accordion-btn::after {
+  content: '+';
+}
+.accordion-btn.active::after {
+  content: '-';
 }
