@@ -1,12 +1,13 @@
-/* Fondo blanco fuera de la imagen */
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  font-family: sans-serif; /* Añadida para legibilidad */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* Imagen de fondo movida a la derecha */
+/* Imagen de fondo fija */
 .bg-image {
   position: fixed;
   top: 0;
@@ -15,70 +16,58 @@ body {
   height: 100vh;
   width: auto;
   z-index: -1;
-  /* Evita que se pueda arrastrar la imagen por error */
-  user-select: none; 
-  pointer-events: none;
+  filter: brightness(0.8);
 }
 
-/* Contenedor principal */
+/* Contenedor principal centrado, sin fondo */
 .page {
-  max-width: 900px;
+  max-width: 700px;
   margin: 40px auto;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.9); /* Un poco más de opacidad para leer mejor */
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+  padding: 20px;
 }
 
-/* Secciones */
-section {
+/* Estilos de bloque con fondo semitransparente (Glassmorphism) */
+.header, .section-block, .accordion, .footer {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  border-radius: 12px;
   margin-bottom: 20px;
 }
 
-/* Botones desplegables */
+/* Ajustes de tipografía */
+.header { text-align: center; }
+.header h1 { color: #1a3c17; }
+.subtitle { font-weight: bold; margin-bottom: 10px; }
+
+/* Acordeón */
 .accordion-btn {
   width: 100%;
   text-align: left;
   padding: 15px;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
   font-size: 1.1rem;
-  background: #f8f8f8;
-  border: 1px solid #eee;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-  border-radius: 6px;
   font-weight: 600;
-  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
 }
 
-/* Estilo al pasar el ratón */
-.accordion-btn:hover {
-  background: #f0f0f0;
-  border-color: #ccc;
-}
+.accordion-btn:hover { background: rgba(0, 0, 0, 0.1); }
+.accordion-btn.active { background: #dcdcdc; border-radius: 6px 6px 0 0; }
 
-/* Botón activo */
-.accordion-btn.active {
-  background: #e0e0e0;
-  border-radius: 6px 6px 0 0; /* Quita redondeo inferior al abrirse */
-}
-
-/* Contenido con animación */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease; /* Transición suave de padding también */
+  transition: max-height 0.4s ease;
   background: rgba(255, 255, 255, 0.5);
-  padding: 0 15px; /* Padding lateral fijo */
-  border-left: 1px solid #eee;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  padding: 0 15px;
   border-radius: 0 0 6px 6px;
 }
 
-/* Cuando está abierto, aplicamos el padding vertical */
-.accordion-content.open {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-color: #ccc;
+.footer {
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 10px;
 }
