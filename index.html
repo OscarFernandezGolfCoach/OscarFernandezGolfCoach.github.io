@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css?v=5001">
+  <link rel="stylesheet" href="styles.css?v=5002">
 </head>
 <body>
 
@@ -64,11 +64,9 @@
     document.querySelectorAll('.accordion-btn').forEach(button => {
       button.addEventListener('click', () => {
         const parent = button.parentElement;
-        
         document.querySelectorAll('.accordion').forEach(acc => {
           if (acc !== parent) acc.classList.remove('is-open');
         });
-
         parent.classList.toggle('is-open');
       });
     });
