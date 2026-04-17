@@ -2,29 +2,53 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Oscar Fernandez Godoy</title>
+  <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css?v=1.1"> </head>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
 
-  <img class="bg-image" src="f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg" alt="">
+  <img class="bg-image" src="f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg" alt="Oscar Fernandez Godoy">
 
   <div class="page">
-    <header>
+    <header class="header">
       <h1>Oscar Fernandez Godoy</h1>
       <p class="subtitle">Técnico Profesional de Golf</p>
-      <a href="https://instagram.com/Oscargodoys" target="_blank">@Oscargodoys</a>
+      <p class="links">
+        <a href="https://instagram.com/Oscargodoys" target="_blank">@Oscargodoys</a>
+      </p>
     </header>
 
-    <section class="sobre-mi">
+    <section class="about">
       <h2>Sobre mí</h2>
-      <p>Soy técnico profesional de golf con experiencia en formación y desarrollo de jugadores.</p>
+      <p>
+        Soy técnico profesional de golf con experiencia en formación, entrenamiento y desarrollo de jugadores de todos los niveles. 
+        Mi enfoque combina técnica, estrategia y mentalidad competitiva.
+      </p>
     </section>
 
     <div class="accordion">
       <button class="accordion-btn">Palmarés</button>
       <div class="accordion-content">
-        <p>🏆 Logro 1<br>🏆 Logro 2</p>
+        <ul>
+          <li>🏆 Logro destacado 1</li>
+          <li>🏆 Logro destacado 2</li>
+          <li>🏆 Logro destacado 3</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-btn">Metodología</button>
+      <div class="accordion-content">
+        <p>Mi metodología se basa en una combinación de análisis técnico, trabajo físico específico y entrenamiento mental.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-btn">Equipo</button>
+      <div class="accordion-content">
+        <p>Trabajo con un equipo multidisciplinar que incluye preparadores físicos y expertos en psicología deportiva.</p>
       </div>
     </div>
 
@@ -34,16 +58,20 @@
   </div>
 
   <script>
-    document.querySelectorAll(".accordion-btn").forEach(btn => {
-      btn.onclick = function() {
+    // Script para el funcionamiento de los desplegables
+    const buttons = document.querySelectorAll(".accordion-btn");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", function() {
+        this.classList.toggle("active");
         const content = this.nextElementSibling;
         if (content.style.maxHeight) {
           content.style.maxHeight = null;
         } else {
           content.style.maxHeight = content.scrollHeight + "px";
         }
-      }
+      });
     });
   </script>
+
 </body>
 </html>
