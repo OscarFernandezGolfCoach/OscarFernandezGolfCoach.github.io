@@ -2,43 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
+  <title>Oscar Fernandez Godoy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <link rel="stylesheet" href="styles.css?v=1.1"> </head>
 <body>
 
   <img class="bg-image" src="f76ebeaf-b8f3-463c-85b0-687c1dfebec1.jpg" alt="">
 
   <div class="page">
-    <header class="header">
+    <header>
       <h1>Oscar Fernandez Godoy</h1>
       <p class="subtitle">Técnico Profesional de Golf</p>
-      <p class="links">
-        <a href="https://instagram.com/Oscargodoys" target="_blank">@Oscargodoys</a>
-      </p>
+      <a href="https://instagram.com/Oscargodoys" target="_blank">@Oscargodoys</a>
     </header>
 
-    <section>
+    <section class="sobre-mi">
       <h2>Sobre mí</h2>
-      <p>Soy técnico profesional de golf con experiencia en formación, entrenamiento y desarrollo de jugadores de todos los niveles.</p>
+      <p>Soy técnico profesional de golf con experiencia en formación y desarrollo de jugadores.</p>
     </section>
 
     <div class="accordion">
       <button class="accordion-btn">Palmarés</button>
       <div class="accordion-content">
-        <ul>
-          <li>🏆 Logro destacado 1</li>
-          <li>🏆 Logro destacado 2</li>
-          <li>🏆 Logro destacado 3</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <button class="accordion-btn">Metodología</button>
-      <div class="accordion-content">
-        <p>Mi metodología se basa en una combinación de análisis técnico, físico y mental.</p>
+        <p>🏆 Logro 1<br>🏆 Logro 2</p>
       </div>
     </div>
 
@@ -48,17 +34,15 @@
   </div>
 
   <script>
-    const buttons = document.querySelectorAll(".accordion-btn");
-    buttons.forEach(btn => {
-      btn.addEventListener("click", function() {
-        this.classList.toggle("active");
+    document.querySelectorAll(".accordion-btn").forEach(btn => {
+      btn.onclick = function() {
         const content = this.nextElementSibling;
         if (content.style.maxHeight) {
           content.style.maxHeight = null;
         } else {
           content.style.maxHeight = content.scrollHeight + "px";
         }
-      });
+      }
     });
   </script>
 </body>
