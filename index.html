@@ -4,7 +4,22 @@
   <meta charset="UTF-8" />
   <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=5000">
+  <style>
+    /* Corrección rápida interna para asegurar funcionalidad */
+    .accordion-content {
+      display: none; /* Por defecto oculto */
+      background: white !important;
+      color: black !important;
+    }
+    .accordion.is-open .accordion-content {
+      display: block !important; /* Se muestra al añadir la clase is-open */
+    }
+    .accordion-btn {
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -14,7 +29,6 @@
     <header class="header">
       <h1>Oscar Fernandez Godoy</h1>
       <p class="subtitle">Técnico Profesional de Golf</p>
-      
       <div class="contact-info">
         <p>📸 <a href="https://instagram.com/Oscargodoys" target="_blank"><strong>@Oscargodoys</strong></a></p>
         <p>📞 <a href="tel:+34608499622"><strong>608 499 622</strong></a></p>
@@ -24,56 +38,47 @@
 
     <section class="about">
       <h2>Sobre mí</h2>
-      <p>
-        Soy técnico profesional de golf con experiencia en formación, entrenamiento y desarrollo de jugadores de todos los niveles.
-      </p>
+      <p>Soy técnico profesional de golf con experiencia en formación, entrenamiento y desarrollo de jugadores de todos los niveles.</p>
     </section>
 
     <div class="accordion">
-      <button class="accordion-btn">Palmarés</button>
+      <div class="accordion-btn">Palmarés</div>
       <div class="accordion-content">
-        <ul>
-          <li>🏆 <strong>Logro destacado 1</strong></li>
-          <li>🏆 <strong>Logro destacado 2</strong></li>
-          <li>🏆 <strong>Logro destacado 3</strong></li>
-        </ul>
+        <div style="padding: 20px;">
+          <ul>
+            <li>🏆 Logro destacado 1</li>
+            <li>🏆 Logro destacado 2</li>
+            <li>🏆 Logro destacado 3</li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <div class="accordion">
-      <button class="accordion-btn">Metodología</button>
+      <div class="accordion-btn">Metodología</div>
       <div class="accordion-content">
-        <p>Mi metodología combina análisis técnico avanzado, preparación física específica y estrategia mental en el campo.</p>
-        <hr style="margin: 10px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
-        <ul>
-          <li>⛳ <strong>Clases individuales y grupales</strong></li>
-          <li>📊 <strong>Análisis de swing con tecnología</strong></li>
-          <li>🏌️‍♂️ <strong>Salidas al campo tutorizadas</strong></li>
-          <li>🧠 <strong>Coaching deportivo y mental</strong></li>
-        </ul>
+        <div style="padding: 20px;">
+          <p>Mi metodología combina análisis técnico avanzado, preparación física específica y estrategia mental en el campo.</p>
+        </div>
       </div>
     </div>
 
     <div class="accordion">
-      <button class="accordion-btn">Equipo</button>
+      <div class="accordion-btn">Equipo</div>
       <div class="accordion-content">
-        <p>Soy jugador de golf y, a través de Kobra, ayudo a otros jugadores a encontrar el material y la ropa que realmente necesitan. Trabajo de forma personalizada, asesorándote y facilitándote el acceso a productos de calidad según tu nivel, estilo y objetivos.
-
-              La idea es ponértelo fácil, ahorrarte tiempo y que puedas centrarte en disfrutar y mejorar tu juego, con la tranquilidad de llevar lo adecuado dentro y fuera del campo.</p>
+        <div style="padding: 20px;">
+          <p>Asesoramiento personalizado en material y ropa a través de Kobra.</p>
+        </div>
       </div>
     </div>
 
     <div class="accordion">
-      <button class="accordion-btn">Servicios</button>
+      <div class="accordion-btn">Servicios</div>
       <div class="accordion-content">
-        <div style="padding: 15px 15px 20px 15px; text-align: center;">
-          <p style="margin-bottom: 15px; font-style: italic;">
-            Además de la formación, gestiono GTkaddy, innovación y tecnología para el mundo del Golf y la venta de gorras exclusivas a través de <a href="https://instagram.com/Caprichocaps" target="_blank"><strong>@Caprichocaps</strong></a></p>
-          </p>
-          
-          <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
-          
-          <p>📦 <strong><a href="Catalogo Gtkaddy.pptx" download style="color: #1a3c17; text-decoration: underline; font-size: 1.1rem;">Descargar Catálogo Gtkaddy</a></strong></p>
+        <div style="padding: 20px; text-align: center;">
+          <p>Venta de gorras exclusivas en <a href="https://instagram.com/Caprichocaps" target="_blank">@Caprichocaps</a></p>
+          <br>
+          <a href="Catalogo Gtkaddy.pptx" download style="color: #1a3c17; font-weight: bold;">Descargar Catálogo</a>
         </div>
       </div>
     </div>
@@ -84,30 +89,19 @@
   </div>
 
   <script>
-    const accButtons = document.querySelectorAll(".accordion-btn");
-
-    accButtons.forEach(btn => {
-      btn.onclick = function() {
-        const parent = this.parentElement;
-        const content = this.nextElementSibling;
-        const isOpen = parent.classList.contains("is-open");
-
-        // Cerrar todos los demás
-        accButtons.forEach(otherBtn => {
-          const otherParent = otherBtn.parentElement;
-          const otherContent = otherBtn.nextElementSibling;
-          otherParent.classList.remove("is-open");
-          otherBtn.classList.remove("active");
-          otherContent.style.maxHeight = null;
+    // SCRIPT ULTRA-SIMPLE (No usa scrollHeight para evitar fallos de cálculo)
+    document.querySelectorAll('.accordion-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const parent = button.parentElement;
+        
+        // Cerrar los otros
+        document.querySelectorAll('.accordion').forEach(acc => {
+          if (acc !== parent) acc.classList.remove('is-open');
         });
 
-        // Abrir el actual si no estaba abierto
-        if (!isOpen) {
-          parent.classList.add("is-open");
-          this.classList.add("active");
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      };
+        // Abrir/Cerrar el actual
+        parent.classList.toggle('is-open');
+      });
     });
   </script>
 </body>
