@@ -1,20 +1,17 @@
-/* TRANSPARENCIA TOTAL Y LIMPIEZA */
+/* RESET INICIAL */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
 }
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   color: #1a1a1a;
-  line-height: 1.6;
+  background-color: white; /* Color de respaldo */
 }
 
-/* IMAGEN DE FONDO - Priorizando lado derecho para el apellido */
+/* IMAGEN DE FONDO */
 .bg-image {
   position: fixed;
   top: 0;
@@ -27,9 +24,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .bg-image {
-    object-position: 95% center; /* Ajuste para móviles muy estrechos */
-  }
+  .bg-image { object-position: 95% center; }
 }
 
 /* CONTENEDOR */
@@ -39,57 +34,51 @@ body {
   padding: 50px 20px;
 }
 
-.header {
+.header, .about, .footer {
+  background: transparent;
   text-align: center;
   margin-bottom: 40px;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: #1a3c17;
-  line-height: 1.1;
-}
+h1 { font-size: 2.5rem; color: #1a3c17; }
+h2 { font-size: 1.4rem; color: #1a3c17; border-bottom: 2px solid #1a3c17; display: inline-block; margin-bottom: 10px; }
 
-.subtitle {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-h2 {
-  font-size: 1.4rem;
-  color: #1a3c17;
-  border-bottom: 2px solid #1a3c17 !important;
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-section { margin-bottom: 30px; }
-
-/* ACORDEONES TRANSPARENTES */
+/* ACORDEONES DINÁMICOS */
 .accordion {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: background-color 0.4s ease; /* Transición suave del fondo */
+}
+
+/* Cuando el acordeón está ABIERTO, le ponemos fondo blanco semi-transparente */
+.accordion.is-open {
+  background-color: rgba(255, 255, 255, 0.85); 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .accordion-btn {
   width: 100%;
   text-align: left;
-  padding: 18px 0;
+  padding: 18px 15px; /* Añadimos un poco de padding lateral */
   font-size: 1.2rem;
   font-weight: bold;
   color: #1a3c17;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0,0,0,0.2) !important; /* Línea divisoria suave */
+  transition: all 0.3s ease;
 }
 
-.accordion-btn::after {
-  content: '+';
+/* Si está abierto, quitamos la línea de abajo del botón para que no corte el fondo */
+.accordion.is-open .accordion-btn {
+  border-bottom: none;
 }
 
-.accordion-btn.active::after {
-  content: '-';
-}
+.accordion-btn::after { content: '+'; }
+.accordion.is-open .accordion-btn::after { content: '-'; }
 
 .accordion-content {
   max-height: 0;
@@ -98,23 +87,9 @@ section { margin-bottom: 30px; }
 }
 
 .accordion-content p, .accordion-content ul {
-  padding: 15px 0;
-}
-
-.accordion-content li {
+  padding: 0 15px 20px 15px; /* Padding para que el texto no toque los bordes del fondo */
   list-style: none;
-  margin-bottom: 8px;
 }
 
-.footer {
-  text-align: center;
-  margin-top: 60px;
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-.links a {
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: bold;
-}
+.footer { margin-top: 60px; font-size: 0.8rem; opacity: 0.7; }
+.links a { color: #0066cc; text-decoration: none; font-weight: bold; }
