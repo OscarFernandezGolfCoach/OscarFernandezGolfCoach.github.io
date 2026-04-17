@@ -1,4 +1,4 @@
-/* TRANSPARENCIA TOTAL Y RESET */
+/* TRANSPARENCIA TOTAL Y LIMPIEZA */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
   line-height: 1.6;
 }
 
-/* IMAGEN DE FONDO - AJUSTE PARA APELLIDO */
+/* IMAGEN DE FONDO - Priorizando lado derecho para el apellido */
 .bg-image {
   position: fixed;
   top: 0;
@@ -22,16 +22,13 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Mantiene el enfoque en la parte derecha de la foto (apellido) */
-  object-position: 85% center; 
+  object-position: 90% center; 
   z-index: -1;
 }
 
-/* AJUSTE MÓVIL EXTREMO */
 @media (max-width: 480px) {
   .bg-image {
-    /* Si el apellido aún se corta, sube este valor a 90% o 95% */
-    object-position: 90% center; 
+    object-position: 95% center; /* Ajuste para móviles muy estrechos */
   }
 }
 
@@ -49,18 +46,13 @@ body {
 
 h1 {
   font-size: 2.5rem;
-  color: #1a3c17; /* Verde oscuro */
-  line-height: 1.2;
+  color: #1a3c17;
+  line-height: 1.1;
 }
 
 .subtitle {
   font-weight: bold;
-  font-size: 1.1rem;
-  margin-top: 5px;
-}
-
-section {
-  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 h2 {
@@ -71,7 +63,9 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* ESTILO ACORDEONES SIN FONDO */
+section { margin-bottom: 30px; }
+
+/* ACORDEONES TRANSPARENTES */
 .accordion {
   margin-bottom: 5px;
 }
@@ -86,12 +80,11 @@ h2 {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0,0,0,0.2) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.2) !important; /* Línea divisoria suave */
 }
 
 .accordion-btn::after {
   content: '+';
-  font-weight: normal;
 }
 
 .accordion-btn.active::after {
@@ -104,24 +97,20 @@ h2 {
   transition: max-height 0.4s ease-out;
 }
 
-.accordion-content ul {
-  list-style: none;
-  padding: 10px 0 20px 5px;
+.accordion-content p, .accordion-content ul {
+  padding: 15px 0;
 }
 
 .accordion-content li {
+  list-style: none;
   margin-bottom: 8px;
-}
-
-.accordion-content p {
-  padding: 10px 0 20px 0;
 }
 
 .footer {
   text-align: center;
-  margin-top: 50px;
-  font-size: 0.85rem;
-  opacity: 0.8;
+  margin-top: 60px;
+  font-size: 0.8rem;
+  opacity: 0.7;
 }
 
 .links a {
