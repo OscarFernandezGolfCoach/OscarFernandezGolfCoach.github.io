@@ -1,84 +1,114 @@
-/* RESET TOTAL */
+/* RESET: Eliminamos fondos y bordes de TODO */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: none !important; /* Mata cualquier fondo de cualquier etiqueta */
-    border: none !important;     /* Mata cualquier borde */
-    box-shadow: none !important;  /* Mata cualquier sombra */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: none !important; 
+  border: none !important;
+  box-shadow: none !important;
 }
 
-/* Solo permitimos fondo a la imagen */
-img.bg-image {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-40%);
-    height: 100vh;
-    width: auto;
-    z-index: -1;
-    display: block;
-}
-
-/* Estructura del texto */
 body {
-    font-family: Arial, sans-serif;
-    color: #1a1a1a;
-    line-height: 1.6;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
 }
 
+/* IMAGEN DE FONDO: Fija detrás de todo */
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-40%);
+  height: 100vh;
+  width: auto;
+  z-index: -1;
+  pointer-events: none; /* Para que no interfiera al hacer clic */
+}
+
+/* CONTENEDOR: Transparente y centrado */
 .page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 50px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px;
 }
 
-/* Títulos y párrafos flotando sobre la imagen */
+/* TEXTOS: Flotando sobre la imagen */
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 h1 {
-    font-size: 2.5rem;
-    color: #1a3c17;
-    text-align: center;
+  font-size: 2.8rem;
+  color: #1a3c17;
+  margin-bottom: 10px;
 }
 
 .subtitle {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 40px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
 }
 
 section {
-    margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 h2 {
-    color: #1a3c17;
-    margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #1a3c17;
+  margin-bottom: 15px;
+  /* Una línea sutil para separar, si quieres quitarla borra la línea de abajo */
+  border-bottom: 2px solid #1a3c17 !important; 
+  display: inline-block;
 }
 
-/* Acordeón minimalista (solo texto) */
+/* ACORDEÓN: Sin cajas, solo texto */
+.accordion {
+  margin-bottom: 10px;
+}
+
 .accordion-btn {
-    width: 100%;
-    text-align: left;
-    padding: 15px 0;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #1a3c17;
-    cursor: pointer;
-    border-bottom: 1px solid #1a3c17 !important; /* Única línea permitida */
+  width: 100%;
+  text-align: left;
+  padding: 15px 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1a3c17;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion-btn::after {
+  content: '+';
+}
+
+.accordion-btn.active::after {
+  content: '-';
 }
 
 .accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 
-.accordion-content.open {
-    padding: 15px 0;
+.accordion-content p, .accordion-content ul {
+  padding: 10px 0 20px 0;
+  list-style-position: inside;
 }
 
 .footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 0.8rem;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.links a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
 }
