@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css?v=5005">
+  <link rel="stylesheet" href="styles.css?v=5002">
 </head>
 <body>
 
@@ -49,13 +49,27 @@
       <div class="accordion-content">
         <div class="inner-text" style="text-align: center;">
           <p>Venta de gorras exclusivas en <a href="https://instagram.com/Caprichocaps" target="_blank">@Caprichocaps</a></p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-          
-          <a href="Catalogo Gtkaddy.pptx" download="Catalogo Gtkaddy.pptx" class="download-link">
-            Catalogo Gtkaddy
-          </a>
+          <br>
+          <a href="Catalogo Gtkaddy.pptx" download class="download-link">Descargar Catálogo</a>
         </div>
       </div>
     </div>
 
     <footer class="footer">
+      <p>© 2026 Oscar Fernandez Godoy</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.accordion-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const parent = button.parentElement;
+        document.querySelectorAll('.accordion').forEach(acc => {
+          if (acc !== parent) acc.classList.remove('is-open');
+        });
+        parent.classList.toggle('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
