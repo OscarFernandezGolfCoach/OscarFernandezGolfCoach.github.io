@@ -1,149 +1,73 @@
-/* 1. RESET Y ESTRUCTURA BASE */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ESTILOS DEL ACORDEÓN MEJORADOS */
+.accordion-item {
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05); /* Fondo muy sutil cuando está cerrado */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #1a1a1a;
-  line-height: 1.6;
-}
-
-/* 2. IMAGEN DE FONDO (Solución definitiva para móvil) */
-.bg-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Centrado total para evitar que se corte en móviles */
-  object-position: center; 
-  z-index: -1;
-}
-
-/* Ajuste de posición solo para ordenadores (donde hay más espacio) */
-@media (min-width: 768px) {
-  .bg-image {
-    object-position: 80% center; 
-  }
-}
-
-/* 3. CONTENEDOR PRINCIPAL */
-.page {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  position: relative;
-  z-index: 1;
-}
-
-.header, .about, .footer {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-h1 {
-  font-size: 2.2rem;
-  color: #1a3c17;
-  margin-bottom: 5px;
-  text-shadow: 0px 1px 2px rgba(255,255,255,0.8);
-}
-
-.subtitle {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-/* 4. CONTACTO */
-.contact-info p {
-  margin-bottom: 8px;
-}
-
-.contact-info a {
-  color: #0066cc;
-  text-decoration: none;
-}
-
-strong {
-  font-weight: 800;
-}
-
-h2 {
-  font-size: 1.3rem;
-  color: #1a3c17;
-  border-bottom: 2px solid #1a3c17;
-  display: inline-block;
-  margin-bottom: 15px;
-}
-
-/* 5. ACORDEONES (Aquí estaba el fallo) */
-.accordion {
-  margin-bottom: 10px;
-  border-radius: 8px;
-  transition: background-color 0.4s ease;
-}
-
-/* Fondo blanco cuando está abierto */
-.accordion.is-open {
-  background-color: rgba(255, 255, 255, 0.9); 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+/* Efecto de elevación y brillo al abrir */
+.accordion-item.is-open {
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transform: translateY(-2px); /* Pequeño salto hacia arriba */
+  border: 1px solid rgba(26, 60, 23, 0.1);
 }
 
 .accordion-btn {
   width: 100%;
-  text-align: left;
-  padding: 18px 15px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #1a3c17;
-  cursor: pointer;
+  padding: 20px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a3c17;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+  transition: letter-spacing 0.3s ease;
 }
 
-.accordion.is-open .accordion-btn {
-  border-bottom: none;
+/* Al pasar el ratón el texto se separa un poco (efecto moderno) */
+.accordion-btn:hover {
+  letter-spacing: 0.5px;
 }
 
+/* Animación del icono + / - */
 .accordion-btn::after {
   content: '+';
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-block;
 }
 
-.accordion.is-open .accordion-btn::after {
-  content: '-';
+.accordion-item.is-open .accordion-btn::after {
+  content: '+'; /* Mantenemos el plus pero lo giramos 45 grados para que sea una X */
+  transform: rotate(45deg);
+  color: #d9534f; /* Color sutil de cierre */
 }
 
-/* ESTO ES LO QUE OCULTA EL CONTENIDO AL PRINCIPIO */
+/* CONTENIDO CON ANIMACIÓN DE ENTRADA */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-out;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0; /* Empezamos invisibles */
+  transform: translateY(10px); /* Empezamos un poco más abajo */
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.4s ease, 
+              transform 0.4s ease;
+}
+
+.accordion-item.is-open .accordion-content {
+  opacity: 1;
+  transform: translateY(0); /* Sube a su posición original */
+  padding-bottom: 25px;
 }
 
 .accordion-content p, .accordion-content ul {
-  padding: 0 15px 20px 15px;
-  list-style: none;
-}
-
-.accordion-content li {
-  margin-bottom: 8px;
-}
-
-/* 6. FOOTER */
-.footer {
-  margin-top: 50px;
-  font-size: 0.8rem;
-  opacity: 0.8;
+  padding: 0 20px 10px 20px;
 }
