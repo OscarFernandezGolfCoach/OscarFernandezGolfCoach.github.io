@@ -1,99 +1,84 @@
-/* Limpieza total de márgenes y fondos */
+/* RESET TOTAL */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: none !important; /* Mata cualquier fondo de cualquier etiqueta */
+    border: none !important;     /* Mata cualquier borde */
+    box-shadow: none !important;  /* Mata cualquier sombra */
 }
 
+/* Solo permitimos fondo a la imagen */
+img.bg-image {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-40%);
+    height: 100vh;
+    width: auto;
+    z-index: -1;
+    display: block;
+}
+
+/* Estructura del texto */
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #1a1a1a;
-  background-color: #ffffff; /* Este fondo solo se verá si la imagen falla */
+    font-family: Arial, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
 }
 
-/* Imagen de fondo */
-.bg-image {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-40%);
-  height: 100vh;
-  width: auto;
-  z-index: -1;
-}
-
-/* CONTENEDOR PRINCIPAL: Aquí quitamos CUALQUIER rastro de recuadro */
 .page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  background: transparent !important; /* Forzamos transparencia */
-  border: none !important;           /* Quitamos bordes */
-  box-shadow: none !important;       /* Quitamos sombras */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
 }
 
-/* Secciones individuales sin fondo */
-section, .header, .accordion, .about {
-  background: transparent !important;
-  border: none !important;
-  margin-bottom: 40px;
-}
-
-.header {
-  text-align: center;
-}
-
+/* Títulos y párrafos flotando sobre la imagen */
 h1 {
-  font-size: 2.5rem;
-  color: #1a3c17; /* Verde golf */
-  margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: #1a3c17;
+    text-align: center;
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
 }
 
-/* ACORDEÓN: Solo texto y una línea sutil debajo */
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #1a3c17;
+    margin-bottom: 10px;
+}
+
+/* Acordeón minimalista (solo texto) */
 .accordion-btn {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid #1a3c17; /* Línea elegante */
-  padding: 15px 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #1a3c17;
-  cursor: pointer;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1a3c17;
+    cursor: pointer;
+    border-bottom: 1px solid #1a3c17 !important; /* Única línea permitida */
 }
 
 .accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  background: transparent !important;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-.accordion-content p, 
-.accordion-content ul {
-  padding: 20px 0;
-  list-style: none;
+.accordion-content.open {
+    padding: 15px 0;
 }
 
-/* Footer transparente */
 .footer {
-  text-align: center;
-  margin-top: 60px;
-  background: transparent !important;
-  font-size: 0.9rem;
-}
-
-.links a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.8rem;
 }
