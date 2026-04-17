@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -72,15 +72,28 @@
 
   <script>
     const accButtons = document.querySelectorAll(".accordion-btn");
+
     accButtons.forEach(btn => {
       btn.onclick = function() {
-        this.classList.toggle("active");
-        this.parentElement.classList.toggle("is-open");
-        
+        const parent = this.parentElement;
         const content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
+        const isOpen = parent.classList.contains("is-open");
+
+        // 1. CERRAMOS TODOS LOS DEMÁS
+        accButtons.forEach(otherBtn => {
+          const otherParent = otherBtn.parentElement;
+          const otherContent = otherBtn.nextElementSibling;
+          
+          otherParent.classList.remove("is-open");
+          otherBtn.classList.remove("active");
+          otherContent.style.maxHeight = null;
+        });
+
+        // 2. SI EL QUE HEMOS PULSADO ESTABA CERRADO, LO ABRIMOS
+        // (Si ya estaba abierto, se queda cerrado por el paso anterior)
+        if (!isOpen) {
+          parent.classList.add("is-open");
+          this.classList.add("active");
           content.style.maxHeight = content.scrollHeight + "px";
         }
       };
