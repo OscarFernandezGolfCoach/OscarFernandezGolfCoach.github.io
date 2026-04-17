@@ -1,11 +1,11 @@
-/* 1. RESET DE NAVEGADOR */
+/* 1. RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 2. EL CUERPO */
+/* 2. CUERPO */
 html, body {
   width: 100%;
   height: 100%;
@@ -13,7 +13,7 @@ html, body {
   background-color: #1a3c17;
 }
 
-/* 3. LA IMAGEN DE FONDO */
+/* 3. FONDO */
 .bg-image {
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@ html, body {
   z-index: 1; 
 }
 
-/* 4. EL CONTENIDO */
+/* 4. CONTENEDOR */
 .page {
   position: relative;
   z-index: 2; 
@@ -35,20 +35,16 @@ html, body {
   min-height: 100vh;
 }
 
-/* 5. TEXTOS SUPERIORES */
+/* 5. CABECERA Y TEXTOS */
 .header, .about, .footer {
   text-align: center;
   color: #ffffff;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
   margin-bottom: 30px;
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 10px; }
-
-.contact-info a {
-  color: #ffffff;
-  text-decoration: none;
-}
+h1 { font-size: 2.2rem; margin-bottom: 5px; }
+.contact-info a { color: #ffffff; text-decoration: none; }
 
 .about p {
   background: rgba(0, 0, 0, 0.6); 
@@ -57,81 +53,77 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; }
   line-height: 1.6;
 }
 
-/* 6. ACORDEONES */
+/* 6. ACORDEONES (TÍTULOS SIEMPRE NEGROS) */
 .accordion {
   margin-bottom: 15px;
-  background: transparent; 
   border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.3s ease;
 }
 
 .accordion-btn {
   width: 100%;
   padding: 18px 20px;
-  background: rgba(0, 0, 0, 0.4); /* Un poco de fondo para que se lea mejor sobre la foto */
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* Fondo blanco semitransparente para que el negro destaque sobre la foto */
+  background: rgba(255, 255, 255, 0.9); 
+  border: none;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #ffffff; 
+  color: #000000; /* TEXTO NEGRO SIEMPRE */
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  outline: none;
-  user-select: none;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   transition: all 0.3s ease;
+  text-shadow: none; /* Sin sombra para máxima claridad */
 }
 
 .accordion-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 1);
 }
 
-/* Ajuste de bordes cuando está abierto */
+/* ESTADO ABIERTO */
 .accordion.is-open .accordion-btn {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  background: rgba(255, 255, 255, 0.2);
-  border-bottom: none;
+  background: #ffffff; 
+  border-radius: 12px 12px 0 0;
 }
 
 /* 7. CONTENIDO DESPLEGABLE */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
+  background-color: #ffffff;
   transition: max-height 0.4s ease-in-out;
-  background-color: #ffffff; /* Fondo blanco */
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-radius: 0 0 12px 12px;
 }
 
-/* Esta es la clave: cuando tiene la clase is-open, el max-height aumenta */
 .accordion.is-open .accordion-content {
-  max-height: 600px; /* Suficiente para el contenido */
+  max-height: 600px;
 }
 
 .inner-text {
-  padding: 20px;
-  color: #000000; /* Texto negro sobre fondo blanco */
+  padding: 20px 25px;
+  color: #000000;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  border-top: 1px solid #eee; /* Línea sutil para separar título de contenido */
 }
 
 .inner-text p, .inner-text a {
-  color: #000000 !important; /* Forzamos el negro para que no herede el blanco del header */
-  text-shadow: none; /* Quitamos la sombra para que se lea bien */
+  color: #000000 !important;
+  text-shadow: none;
 }
 
-/* Estilo para el botón de descarga */
+/* BOTÓN DESCARGA */
 .download-link {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
+  margin-top: 15px;
+  padding: 12px 25px;
   background-color: #1a3c17;
   color: #ffffff !important;
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
 }
+
+/* FOOTER */
+.footer { margin-top: 40px; opacity: 0.9; }
