@@ -8,7 +8,6 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   color: #1a1a1a;
-  background-color: white; /* Color de respaldo */
 }
 
 /* IMAGEN DE FONDO */
@@ -40,17 +39,29 @@ body {
   margin-bottom: 40px;
 }
 
-h1 { font-size: 2.5rem; color: #1a3c17; }
+h1 { font-size: 2.5rem; color: #1a3c17; margin-bottom: 5px; }
+.subtitle { font-weight: bold; font-size: 1.1rem; color: #333; margin-bottom: 15px; }
+
+/* BLOQUE DE CONTACTO */
+.contact-info p {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+.contact-info a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 700; /* Negrita extra fuerte */
+}
+
 h2 { font-size: 1.4rem; color: #1a3c17; border-bottom: 2px solid #1a3c17; display: inline-block; margin-bottom: 10px; }
 
 /* ACORDEONES DINÁMICOS */
 .accordion {
   margin-bottom: 10px;
   border-radius: 8px;
-  transition: background-color 0.4s ease; /* Transición suave del fondo */
+  transition: background-color 0.4s ease;
 }
 
-/* Cuando el acordeón está ABIERTO, le ponemos fondo blanco semi-transparente */
 .accordion.is-open {
   background-color: rgba(255, 255, 255, 0.85); 
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -59,7 +70,7 @@ h2 { font-size: 1.4rem; color: #1a3c17; border-bottom: 2px solid #1a3c17; displa
 .accordion-btn {
   width: 100%;
   text-align: left;
-  padding: 18px 15px; /* Añadimos un poco de padding lateral */
+  padding: 18px 15px;
   font-size: 1.2rem;
   font-weight: bold;
   color: #1a3c17;
@@ -69,14 +80,9 @@ h2 { font-size: 1.4rem; color: #1a3c17; border-bottom: 2px solid #1a3c17; displa
   border-bottom: 1px solid rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
-  transition: all 0.3s ease;
 }
 
-/* Si está abierto, quitamos la línea de abajo del botón para que no corte el fondo */
-.accordion.is-open .accordion-btn {
-  border-bottom: none;
-}
-
+.accordion.is-open .accordion-btn { border-bottom: none; }
 .accordion-btn::after { content: '+'; }
 .accordion.is-open .accordion-btn::after { content: '-'; }
 
@@ -87,9 +93,13 @@ h2 { font-size: 1.4rem; color: #1a3c17; border-bottom: 2px solid #1a3c17; displa
 }
 
 .accordion-content p, .accordion-content ul {
-  padding: 0 15px 20px 15px; /* Padding para que el texto no toque los bordes del fondo */
+  padding: 0 15px 20px 15px;
   list-style: none;
 }
 
+/* Estilo para los ítems en negrita dentro del acordeón */
+.accordion-content li {
+  margin-bottom: 8px;
+}
+
 .footer { margin-top: 60px; font-size: 0.8rem; opacity: 0.7; }
-.links a { color: #0066cc; text-decoration: none; font-weight: bold; }
