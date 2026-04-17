@@ -1,4 +1,4 @@
-/* 1. RESET CRÍTICO */
+/* 1. RESET BÁSICO */
 * {
   margin: 0;
   padding: 0;
@@ -7,13 +7,12 @@
 
 html, body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   font-family: 'Segoe UI', Arial, sans-serif;
-  color: #1a1a1a;
-  background-color: #f4f4f4; /* Color de respaldo por si falla la foto */
+  background-color: #222; /* Fondo oscuro de respaldo */
 }
 
-/* 2. IMAGEN DE FONDO (Capa -1) */
+/* 2. IMAGEN DE FONDO */
 .bg-image {
   position: fixed;
   top: 0;
@@ -23,19 +22,17 @@ html, body {
   object-fit: cover;
   object-position: center;
   z-index: -1;
+  display: block;
 }
 
-@media (min-width: 768px) {
-  .bg-image { object-position: 80% center; }
-}
-
-/* 3. CONTENEDOR (Capa 1) */
+/* 3. CONTENEDOR */
 .page {
   position: relative;
-  z-index: 1; /* Esto asegura que el texto esté POR ENCIMA de la foto */
+  z-index: 10;
   max-width: 600px;
   margin: 0 auto;
   padding: 40px 20px;
+  color: #fff; /* Texto principal en blanco para que resalte */
 }
 
 .header, .about, .footer {
@@ -45,76 +42,80 @@ html, body {
 
 h1 {
   font-size: 2.2rem;
-  color: #1a3c17;
-  text-shadow: 0 1px 3px rgba(255,255,255,0.9);
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
-/* 4. ACORDEONES MODERNOS */
+.subtitle {
+  font-weight: bold;
+  color: #eee;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* 4. ACORDEONES (MÁXIMA COMPATIBILIDAD) */
 .accordion-item {
   margin-bottom: 12px;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.2); /* Sutil fondo para verlo siempre */
-  backdrop-filter: blur(5px); /* Efecto cristal moderno */
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.95); /* Blanco casi sólido */
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.accordion-item.is-open {
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 .accordion-btn {
   width: 100%;
-  padding: 20px;
-  background: transparent;
+  padding: 18px 20px;
+  background: #fff;
   border: none;
   font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a3c17;
+  font-weight: bold;
+  color: #1a3c17; /* Verde oscuro para el título del botón */
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
 
-/* El icono + */
 .accordion-btn::after {
   content: '+';
-  font-size: 1.5rem;
-  transition: transform 0.4s ease;
+  font-size: 1.4rem;
+  color: #1a3c17;
 }
 
 .accordion-item.is-open .accordion-btn::after {
-  transform: rotate(45deg); /* Se convierte en X */
-  color: #d9534f;
+  content: '-';
 }
 
-/* 5. CONTENIDO CON ANIMACIÓN SEGURA */
+/* CONTENIDO: Aquí forzamos que el texto sea negro sobre fondo blanco */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  opacity: 0; /* Empieza invisible */
-  transition: max-height 0.4s ease-out, opacity 0.3s ease;
+  background-color: #fff;
+  color: #333; /* Texto gris oscuro/negro para que SE VEA */
+  transition: max-height 0.3s ease-out;
 }
 
-/* Cuando se abre, se vuelve visible */
 .accordion-item.is-open .accordion-content {
-  max-height: 1000px; /* Suficiente para el texto */
-  opacity: 1;
-  padding-bottom: 20px;
+  max-height: 1500px; /* Suficiente altura */
 }
 
 .accordion-content p, .accordion-content ul {
-  padding: 0 20px 10px 20px;
+  padding: 15px 20px 25px 20px;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .accordion-content li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   list-style: none;
 }
 
-.footer { margin-top: 40px; font-size: 0.8rem; opacity: 0.8; }
+.accordion-content a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.footer {
+  margin-top: 40px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
