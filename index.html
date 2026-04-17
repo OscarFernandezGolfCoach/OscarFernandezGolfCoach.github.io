@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Oscar Fernandez Godoy – Técnico Profesional de Golf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 
@@ -44,13 +44,20 @@
       <button class="accordion-btn">Metodología</button>
       <div class="accordion-content">
         <p>Mi metodología combina análisis técnico avanzado, preparación física específica y estrategia mental en el campo.</p>
+        <hr style="margin: 10px 0; border: 0; border-top: 1px solid rgba(0,0,0,0.1);">
+        <ul>
+          <li>⛳ <strong>Clases individuales y grupales</strong></li>
+          <li>📊 <strong>Análisis de swing con tecnología</strong></li>
+          <li>🏌️‍♂️ <strong>Salidas al campo tutorizadas</strong></li>
+          <li>🧠 <strong>Coaching deportivo y mental</strong></li>
+        </ul>
       </div>
     </div>
 
     <div class="accordion">
       <button class="accordion-btn">Equipo</button>
       <div class="accordion-content">
-        <p>Trabajo con especialistas en biomecánica, preparadores físicos y psicólogos deportivos.</p>
+        <p>Trabajo con especialistas en biomecánica, preparadores físicos y psicólogos deportivos para ofrecer un enfoque integral del jugador.</p>
       </div>
     </div>
 
@@ -59,8 +66,9 @@
       <div class="accordion-content">
         <ul>
           <li>⛳ <strong>Clases individuales y grupales</strong></li>
-          <li>📊 <strong>Análisis de swing</strong></li>
-          <li>🏌️‍♂️ <strong>Salidas al campo</strong></li>
+          <li>📊 <strong>Análisis de swing con tecnología</strong></li>
+          <li>🏌️‍♂️ <strong>Salidas al campo tutorizadas</strong></li>
+          <li>🧠 <strong>Coaching deportivo y mental</strong></li>
         </ul>
       </div>
     </div>
@@ -79,18 +87,16 @@
         const content = this.nextElementSibling;
         const isOpen = parent.classList.contains("is-open");
 
-        // 1. CERRAMOS TODOS LOS DEMÁS
+        // Cerramos todos antes de abrir el nuevo
         accButtons.forEach(otherBtn => {
           const otherParent = otherBtn.parentElement;
           const otherContent = otherBtn.nextElementSibling;
-          
           otherParent.classList.remove("is-open");
           otherBtn.classList.remove("active");
           otherContent.style.maxHeight = null;
         });
 
-        // 2. SI EL QUE HEMOS PULSADO ESTABA CERRADO, LO ABRIMOS
-        // (Si ya estaba abierto, se queda cerrado por el paso anterior)
+        // Si no estaba abierto, lo abrimos
         if (!isOpen) {
           parent.classList.add("is-open");
           this.classList.add("active");
