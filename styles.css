@@ -5,15 +5,15 @@
   box-sizing: border-box;
 }
 
-/* 2. EL CUERPO DEBE SER TRANSPARENTE */
+/* 2. EL CUERPO */
 html, body {
   width: 100%;
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a3c17; /* Color de seguridad verde oscuro */
+  background-color: #1a3c17;
 }
 
-/* 3. LA IMAGEN DE FONDO (CAPA 0) */
+/* 3. LA IMAGEN DE FONDO */
 .bg-image {
   position: fixed;
   top: 0;
@@ -22,13 +22,13 @@ html, body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: 1; /* La ponemos en la capa 1 */
+  z-index: 1; 
 }
 
-/* 4. EL CONTENIDO (CAPA 2 - SIEMPRE POR ENCIMA) */
+/* 4. EL CONTENIDO */
 .page {
   position: relative;
-  z-index: 2; /* Mayor que la imagen */
+  z-index: 2; 
   max-width: 550px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -46,16 +46,16 @@ html, body {
 h1 { font-size: 2.5rem; margin-bottom: 10px; }
 
 .about p {
-  background: rgba(0, 0, 0, 0.5); /* Velo negro para leer el Sobre Mí */
+  background: rgba(0, 0, 0, 0.5); 
   padding: 20px;
   border-radius: 15px;
   line-height: 1.6;
 }
 
-/* 6. ACORDEONES (Cajas Blancas) */
-.accordion-item {
+/* 6. ACORDEONES - CORREGIDO */
+.accordion {
   margin-bottom: 15px;
-  background: #ffffff !important; /* Blanco sólido para que el texto se vea sí o sí */
+  background: #ffffff !important; 
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -73,26 +73,32 @@ h1 { font-size: 2.5rem; margin-bottom: 10px; }
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  outline: none;
 }
 
-/* 7. CONTENIDO DESPLEGABLE (TEXTO NEGRO) */
+/* 7. CONTENIDO DESPLEGABLE - CORREGIDO */
 .accordion-content {
-  height: 0; /* JS controla esto */
+  max-height: 0; /* Usamos max-height para que la animación funcione */
   overflow: hidden;
-  background-color: #f9f9f9;
-  transition: height 0.3s ease-out;
+  background-color: #ffffff;
+  transition: max-height 0.3s ease-in-out; /* Animación suave */
+}
+
+/* Esta clase la activará el JavaScript */
+.accordion.is-open .accordion-content {
+  max-height: 1000px; /* Un valor lo suficientemente grande */
 }
 
 .inner-text {
-  padding: 20px;
-  color: #000000 !important; /* TEXTO NEGRO PURO */
+  padding: 10px 20px 25px 20px;
+  color: #000000 !important; 
   font-size: 1rem;
   line-height: 1.5;
 }
 
 .inner-text ul {
-  list-style: none;
-  margin: 10px 0;
+  list-style: disc;
+  margin: 10px 0 10px 20px;
 }
 
 .inner-text li {
