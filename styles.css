@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background: #fff;
+  font-family: sans-serif; /* Añadida para legibilidad */
 }
 
 /* Imagen de fondo movida a la derecha */
@@ -14,15 +15,19 @@ body {
   height: 100vh;
   width: auto;
   z-index: -1;
+  /* Evita que se pueda arrastrar la imagen por error */
+  user-select: none; 
+  pointer-events: none;
 }
 
-/* Contenedor principal con fondo blanco suave */
+/* Contenedor principal */
 .page {
   max-width: 900px;
   margin: 40px auto;
-  padding: 20px;
-  background: rgba(255,255,255,0.85);
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9); /* Un poco más de opacidad para leer mejor */
   border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
 }
 
 /* Secciones */
@@ -34,34 +39,46 @@ section {
 .accordion-btn {
   width: 100%;
   text-align: left;
-  padding: 12px;
+  padding: 15px;
   font-size: 1.1rem;
-  background: #f0f0f0;
-  border: 1px solid #ccc;
+  background: #f8f8f8;
+  border: 1px solid #eee;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
   margin-top: 10px;
   border-radius: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Estilo al pasar el ratón */
+.accordion-btn:hover {
+  background: #f0f0f0;
+  border-color: #ccc;
 }
 
 /* Botón activo */
 .accordion-btn.active {
-  background: #dcdcdc;
+  background: #e0e0e0;
+  border-radius: 6px 6px 0 0; /* Quita redondeo inferior al abrirse */
 }
 
 /* Contenido con animación */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 0 12px;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  transition: max-height 0.4s ease, padding 0.4s ease; /* Transición suave de padding también */
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0 15px; /* Padding lateral fijo */
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
   border-radius: 0 0 6px 6px;
 }
 
+/* Cuando está abierto, aplicamos el padding vertical */
 .accordion-content.open {
-  padding: 12px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-color: #ccc;
 }
